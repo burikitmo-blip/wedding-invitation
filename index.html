@@ -45,14 +45,29 @@
 
         /* ----- Бегущая строка ----- */
         .marquee {
-            position: fixed; top: 0; left: 0; width: 100%;
-            background: var(--olive); color: white;
-            padding: 10px 0; z-index: 1000; overflow: hidden;
-            font-size: 0.75rem; text-transform: uppercase;
-            letter-spacing: 0.3em; font-weight: 400;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--olive);
+            color: white;
+            padding: 10px 0;
+            z-index: 1000;
+            overflow: hidden;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 400;
         }
-        .marquee__inner { display: flex; animation: marquee 20s linear infinite; white-space: nowrap; }
+
+        .marquee__inner {
+            display: flex;
+            animation: marquee 20s linear infinite;
+            white-space: nowrap;
+        }
+
         .marquee span { padding: 0 30px; }
+
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -60,203 +75,386 @@
 
         /* ----- Анимации ----- */
         .fade-up {
-            opacity: 0; transform: translateY(40px);
+            opacity: 0;
+            transform: translateY(40px);
             transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* ----- Hero ----- */
         .hero {
             min-height: 100vh;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center; padding: 100px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 40px;
             background: linear-gradient(180deg, rgba(123,141,90,0.04) 0%, transparent 50%);
         }
+
         .hero .invite-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem; font-style: italic;
-            color: var(--wine); margin-bottom: 30px;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--wine);
+            margin-bottom: 30px;
         }
+
         .hero .subtitle {
-            font-size: 0.78rem; text-transform: uppercase;
-            letter-spacing: 0.22em; color: var(--brown);
-            margin-bottom: 12px; font-weight: 400;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--brown);
+            margin-bottom: 12px;
+            font-weight: 400;
         }
-        .hero .names { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
+
+        .hero .names {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem; font-weight: 400;
-            color: var(--text); letter-spacing: 0.05em;
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--text);
+            letter-spacing: 0.05em;
         }
+
         .hero .and-symbol {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem; color: var(--wine); font-style: italic;
+            font-size: 2.8rem;
+            color: var(--wine);
+            font-style: italic;
         }
+
         .hero .date-block { margin-top: 50px; }
+
         .hero .day {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem; font-weight: 400;
-            color: var(--olive); line-height: 1;
+            font-size: 5rem;
+            font-weight: 400;
+            color: var(--olive);
+            line-height: 1;
         }
+
         .hero .month-year {
-            font-size: 0.85rem; text-transform: uppercase;
-            letter-spacing: 0.25em; color: var(--brown); margin-top: 8px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--brown);
+            margin-top: 8px;
         }
 
         /* ----- Фото с выездом ----- */
         .photo-pair {
-            display: flex; gap: 20px;
-            max-width: 600px; margin: 30px auto 0; overflow: hidden;
+            display: flex;
+            gap: 20px;
+            max-width: 600px;
+            margin: 30px auto 0;
+            overflow: hidden;
         }
+
         .photo-pair img {
-            width: 50%; aspect-ratio: 3/4; object-fit: cover;
+            width: 50%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s;
             opacity: 0;
         }
+
         .photo-pair img:first-child { transform: translateX(-120px); }
         .photo-pair img:last-child { transform: translateX(120px); }
-        .photo-pair.visible img { opacity: 1; transform: translateX(0); }
 
-        /* ----- Фрисби-анимация ----- */
+        .photo-pair.visible img {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ----- Фрисби-анимация с пиксельными человечками ----- */
         .frisbee-section {
             position: relative;
             padding: 100px 0;
             overflow: hidden;
-            min-height: 400px;
+            min-height: 450px;
+            background: linear-gradient(180deg, rgba(123,141,90,0.03) 0%, transparent 100%);
         }
+
         .frisbee-scene {
             position: relative;
             max-width: 600px;
             margin: 0 auto;
-            height: 300px;
+            height: 350px;
         }
-        .character {
+
+        .pixel-character {
             position: absolute;
             bottom: 0;
-            font-size: 4rem;
-            transition: all 0.3s;
+            width: 48px;
+            height: 72px;
+            image-rendering: pixelated;
+            transition: transform 0.2s;
         }
-        .character.groom { left: 10%; }
-        .character.bride { right: 10%; transform: scaleX(-1); }
-        .frisbee {
+
+        .pixel-character.groom {
+            left: 12%;
+            animation: groomIdle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes groomIdle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .pixel-character.bride {
+            right: 12%;
+            animation: brideIdle 1.8s ease-in-out infinite;
+        }
+
+        @keyframes brideIdle {
+            0%, 100% { transform: translateY(0) scaleX(-1); }
+            50% { transform: translateY(-3px) scaleX(-1); }
+        }
+
+        .pixel-character.groom.throwing {
+            animation: groomThrow 0.6s ease-out;
+        }
+
+        @keyframes groomThrow {
+            0% { transform: translateY(0) rotate(0deg); }
+            30% { transform: translateY(-15px) rotate(-15deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .pixel-character.bride.catching {
+            animation: brideCatch 0.6s ease-out;
+        }
+
+        @keyframes brideCatch {
+            0% { transform: translateY(0) scaleX(-1); }
+            30% { transform: translateY(-10px) scaleX(-1); }
+            100% { transform: translateY(0) scaleX(-1); }
+        }
+
+        .pixel-frisbee {
             position: absolute;
-            font-size: 2.5rem;
-            top: 40%;
-            left: 30%;
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            width: 32px;
+            height: 32px;
+            top: 35%;
+            left: 25%;
             opacity: 0;
-            transform: rotate(0deg);
+            image-rendering: pixelated;
+            transition: none;
+            z-index: 3;
         }
-        .frisbee.flying {
-            left: 60%;
+
+        .pixel-frisbee.flying-to-bride {
             opacity: 1;
+            left: 62%;
+            top: 25%;
             transform: rotate(720deg);
+            transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-        .frisbee.returning {
-            left: 30%;
+
+        .pixel-frisbee.flying-to-groom {
             opacity: 1;
+            left: 25%;
+            top: 30%;
             transform: rotate(1440deg);
+            transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .pixel-hearts {
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0;
+            pointer-events: none;
+            letter-spacing: 4px;
+        }
+
+        .pixel-hearts.show {
+            animation: heartsFloat 1.2s ease-out forwards;
+        }
+
+        @keyframes heartsFloat {
+            0% { opacity: 1; transform: translateY(0) scale(0.5); }
+            50% { opacity: 1; transform: translateY(-30px) scale(1.2); }
+            100% { opacity: 0; transform: translateY(-60px) scale(1); }
         }
 
         /* ----- Календарь ----- */
         .calendar-wrapper {
             background: var(--white);
             border: 1px solid var(--border);
-            max-width: 450px; margin: 30px auto 0;
+            max-width: 450px;
+            margin: 30px auto 0;
             padding: 30px 25px;
             box-shadow: 0 4px 25px rgba(0,0,0,0.03);
         }
+
         .calendar-month {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem; color: var(--wine); margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--wine);
+            margin-bottom: 15px;
         }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; font-size: 0.85rem; }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
         .calendar-grid .day-header {
-            font-size: 0.65rem; text-transform: uppercase;
-            color: var(--brown); font-weight: 500;
-            letter-spacing: 0.1em; padding-bottom: 8px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: var(--brown);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            padding-bottom: 8px;
         }
+
         .calendar-grid .day {
-            padding: 10px 4px; border-radius: 50%;
-            cursor: default; font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem; color: var(--text);
+            padding: 10px 4px;
+            border-radius: 50%;
+            cursor: default;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--text);
         }
+
         .calendar-grid .day.other-month { color: #ccc; }
+
         .calendar-grid .day.wedding-day {
-            background: var(--wine); color: white; font-weight: 600;
+            background: var(--wine);
+            color: white;
+            font-weight: 600;
             animation: heartbeat 1.5s ease-in-out infinite;
         }
+
         @keyframes heartbeat {
-            0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.1)}60%{transform:scale(1)}
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
         }
 
         /* ----- Таймер ----- */
         .timer-section {
             background: linear-gradient(135deg, var(--olive), var(--olive-light));
-            padding: 60px 0; color: white;
+            padding: 60px 0;
+            color: white;
         }
+
         .timer-grid {
-            display: flex; justify-content: center;
-            align-items: center; gap: 10px; flex-wrap: nowrap;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
         }
+
         .timer-item {
-            text-align: center; min-width: 70px;
+            text-align: center;
+            min-width: 70px;
             background: rgba(255,255,255,0.15);
-            border-radius: 12px; padding: 15px 12px;
+            border-radius: 12px;
+            padding: 15px 12px;
             backdrop-filter: blur(10px);
         }
+
         .timer-separator {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem; color: rgba(255,255,255,0.7); padding: 0 2px;
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.7);
+            padding: 0 2px;
         }
+
         .timer-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem; font-weight: 600; line-height: 1;
+            font-size: 3rem;
+            font-weight: 600;
+            line-height: 1;
         }
+
         .timer-label {
-            font-size: 0.6rem; text-transform: uppercase;
-            letter-spacing: 0.15em; margin-top: 4px; opacity: 0.9;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 4px;
+            opacity: 0.9;
         }
+
         .timer-note {
-            margin-top: 25px; font-size: 0.9rem;
-            font-style: italic; font-family: 'Cormorant Garamond', serif; opacity: 0.9;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            opacity: 0.9;
         }
 
         /* ----- Карточки ----- */
         section { padding: 80px 0; text-align: center; }
 
         .elegant-card {
-            background: var(--white); border: 1px solid var(--border);
-            padding: 60px 50px; margin-bottom: 24px;
-            text-align: center; position: relative;
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 60px 50px;
+            margin-bottom: 24px;
+            text-align: center;
+            position: relative;
             box-shadow: 0 4px 30px rgba(0,0,0,0.03);
-            transition: all 0.4s; border-radius: 2px;
+            transition: all 0.4s;
+            border-radius: 2px;
         }
+
         .elegant-card:hover {
             box-shadow: 0 12px 45px rgba(0,0,0,0.06);
             transform: translateY(-2px);
         }
+
         .elegant-card .card-ornament {
-            width: 50px; height: 2px;
-            margin: 0 auto 28px; border-radius: 1px;
-        }
-        .elegant-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem; margin-bottom: 20px;
-            font-weight: 500; letter-spacing: 0.04em;
-        }
-        .elegant-card p { font-size: 0.95rem; line-height: 2.2; }
-        .elegant-card .label {
-            display: inline-block; font-size: 0.68rem;
-            text-transform: uppercase; letter-spacing: 0.25em;
-            margin-bottom: 22px; font-weight: 500;
-            padding: 7px 24px; border-radius: 2px;
+            width: 50px;
+            height: 2px;
+            margin: 0 auto 28px;
+            border-radius: 1px;
         }
 
-        /* Цветовые схемы */
+        .elegant-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        .elegant-card p { font-size: 0.95rem; line-height: 2.2; }
+
+        .elegant-card .label {
+            display: inline-block;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            margin-bottom: 22px;
+            font-weight: 500;
+            padding: 7px 24px;
+            border-radius: 2px;
+        }
+
         .card-location { border-left: 3px solid var(--olive); }
         .card-location .card-ornament { background: var(--olive); }
         .card-location h3 { color: var(--olive); }
@@ -284,44 +482,59 @@
 
         /* ----- Кнопка ----- */
         .btn-outline {
-            display: inline-block; padding: 14px 40px;
-            border: 1px solid var(--wine); color: var(--wine);
-            font-size: 0.75rem; text-transform: uppercase;
-            letter-spacing: 0.2em; cursor: pointer;
-            background: transparent; font-family: 'Montserrat', sans-serif;
-            transition: all 0.4s; margin-top: 20px;
+            display: inline-block;
+            padding: 14px 40px;
+            border: 1px solid var(--wine);
+            color: var(--wine);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            background: transparent;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.4s;
+            margin-top: 20px;
         }
-        .btn-outline:hover { background: var(--wine); color: white; }
+
+        .btn-outline:hover {
+            background: var(--wine);
+            color: white;
+        }
 
         /* ----- Кубики с рандомным перемещением ----- */
         .dice-playground {
             position: relative;
-            max-width: 600px; height: 250px;
+            max-width: 600px;
+            height: 250px;
             margin: 0 auto;
             background: var(--white);
             border: 2px dashed var(--beige-dark);
             border-radius: 16px;
             overflow: hidden;
         }
+
         .dice {
             position: absolute;
-            width: 60px; height: 60px;
+            width: 60px;
+            height: 60px;
             background: var(--white);
             border: 2px solid var(--brown);
             border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 2rem;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.2),
-                        top 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.2),
-                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.2), top 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.2), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
             user-select: none;
             z-index: 2;
         }
+
         .dice.rolling {
             animation: diceBounce 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         @keyframes diceBounce {
             0% { transform: scale(1) rotate(0deg); }
             30% { transform: scale(1.3) rotate(180deg); }
@@ -331,97 +544,214 @@
 
         /* ----- Модальное окно ----- */
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); z-index: 2000;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.4s;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
             backdrop-filter: blur(4px);
         }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         .modal {
-            background: var(--white); padding: 40px 30px;
-            max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;
-            text-align: center; position: relative; border-radius: 4px;
+            background: var(--white);
+            padding: 40px 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: center;
+            position: relative;
+            border-radius: 4px;
         }
+
         .modal-close {
-            position: absolute; top: 15px; right: 20px;
-            font-size: 1.5rem; cursor: pointer; color: var(--wine);
-            background: none; border: none;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--wine);
+            background: none;
+            border: none;
         }
-        .dress-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 25px; }
-        .dress-grid img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; }
+
+        .dress-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 25px;
+        }
+
+        .dress-grid img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 4px;
+        }
 
         /* ----- Цветовая палитра ----- */
-        .color-palette { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
-        .color-circle {
-            width: 50px; height: 50px; border-radius: 50%;
-            border: 2px solid var(--border); transition: transform 0.3s;
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 22px;
+            flex-wrap: wrap;
         }
+
+        .color-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            transition: transform 0.3s;
+        }
+
         .color-circle:hover { transform: scale(1.15); }
 
         /* ----- RSVP ----- */
         .rsvp-form {
-            background: var(--white); border: 1px solid var(--border);
-            padding: 55px 45px; text-align: left;
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 55px 45px;
+            text-align: left;
             box-shadow: 0 4px 30px rgba(0,0,0,0.03);
             border-left: 3px solid var(--olive);
         }
+
         .rsvp-form h2 { text-align: center; color: var(--olive); }
+
         .form-group { margin-bottom: 28px; }
+
         .form-group label {
-            display: block; font-size: 0.78rem; text-transform: uppercase;
-            letter-spacing: 0.12em; margin-bottom: 10px;
-            color: var(--text); font-weight: 400;
+            display: block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 400;
         }
+
         .form-group input[type="text"],
         .form-group input[type="tel"] {
-            width: 100%; padding: 15px 18px;
+            width: 100%;
+            padding: 15px 18px;
             border: 1px solid var(--border);
-            font-family: 'Montserrat', sans-serif; font-size: 0.9rem;
-            background: var(--bg); color: var(--text); transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            background: var(--bg);
+            color: var(--text);
+            transition: all 0.3s;
         }
-        .form-group input:focus { outline: none; border-color: var(--olive); }
-        .radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--olive);
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .radio-group label, .checkbox-group label {
-            display: flex; align-items: center; gap: 12px;
-            font-size: 0.9rem; text-transform: none;
-            letter-spacing: 0.02em; cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            cursor: pointer;
         }
-        input[type="radio"], input[type="checkbox"] { accent-color: var(--wine); width: 17px; height: 17px; }
+
+        input[type="radio"], input[type="checkbox"] {
+            accent-color: var(--wine);
+            width: 17px;
+            height: 17px;
+        }
+
         button[type="submit"] {
-            background: var(--olive); color: white; border: none;
-            padding: 17px 55px; font-family: 'Montserrat', sans-serif;
-            font-size: 0.78rem; text-transform: uppercase;
-            letter-spacing: 0.22em; cursor: pointer;
-            transition: all 0.4s; display: block;
-            margin: 35px auto 0; width: 100%; max-width: 380px;
+            background: var(--olive);
+            color: white;
+            border: none;
+            padding: 17px 55px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            cursor: pointer;
+            transition: all 0.4s;
+            display: block;
+            margin: 35px auto 0;
+            width: 100%;
+            max-width: 380px;
         }
+
         button[type="submit"]:hover { background: var(--olive-light); }
-        .form-success { display: none; text-align: center; padding: 40px; color: var(--olive); font-style: italic; }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: var(--olive);
+            font-style: italic;
+        }
 
         /* ----- Footer ----- */
         .footer {
-            text-align: center; padding: 80px 20px;
+            text-align: center;
+            padding: 80px 20px;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem; font-style: italic; color: var(--wine);
-        }
-        .footer::before {
-            content: ''; display: block; width: 60px; height: 2px;
-            background: var(--wine); margin: 0 auto 30px; opacity: 0.4;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--wine);
         }
 
-        .photo-single { max-width: 450px; margin: 30px auto 0; }
+        .footer::before {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--wine);
+            margin: 0 auto 30px;
+            opacity: 0.4;
+        }
+
+        .photo-single {
+            max-width: 450px;
+            margin: 30px auto 0;
+        }
+
         .photo-single img {
-            width: 100%; aspect-ratio: 4/5; object-fit: cover;
-            border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
         .section-divider {
-            width: 80px; height: 2px;
+            width: 80px;
+            height: 2px;
             background: linear-gradient(90deg, transparent, var(--brown), transparent);
             margin: 0 auto;
         }
 
+        /* ----- Адаптивность ----- */
         @media (max-width: 600px) {
             .hero h1 { font-size: 2.8rem; }
             .hero .day { font-size: 3.5rem; }
@@ -438,337 +768,377 @@
             .dress-grid { grid-template-columns: 1fr; }
             .dice { width: 50px; height: 50px; font-size: 1.5rem; }
             .dice-playground { height: 200px; }
-            .frisbee-scene { height: 200px; }
-            .character { font-size: 3rem; }
-            .frisbee { font-size: 2rem; }
+            .frisbee-scene { height: 250px; }
+            .pixel-character { width: 36px; height: 54px; }
+            .pixel-character.groom { left: 8%; }
+            .pixel-character.bride { right: 8%; }
+            .pixel-frisbee { width: 24px; height: 24px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Бегущая строка -->
-<div class="marquee">
-    <div class="marquee__inner">
-        <span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span>
-    </div>
-</div>
-
-<!-- HERO -->
-<section class="hero fade-up">
-    <p class="invite-text">you are invited</p>
-    <p class="subtitle">мы женимся</p>
-    <div class="names">
-        <h1>Дмитрий</h1>
-        <span class="and-symbol">&</span>
-        <h1>Кристина</h1>
-    </div>
-    <div class="photo-pair" id="heroPhotos">
-        <img src="https://i.imgur.com/BD7ghSq.jpg" alt="Фото пары 1">
-        <img src="https://i.imgur.com/oHeYNH2.jpg" alt="Фото пары 2">
-    </div>
-    <div class="date-block">
-        <div class="day">24</div>
-        <div class="day">07</div>
-        <div class="month-year">июль 2026</div>
-    </div>
-</section>
-
-<!-- Фрисби-анимация -->
-<section class="frisbee-section">
-    <div class="container fade-up">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--wine);margin-bottom:10px;">Любовь в движении</p>
-        <div class="frisbee-scene" id="frisbeeScene">
-            <div class="character groom">🤵</div>
-            <div class="frisbee" id="frisbee">🥏</div>
-            <div class="character bride">👰</div>
+    <!-- Бегущая строка -->
+    <div class="marquee">
+        <div class="marquee__inner">
+            <span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span>
         </div>
     </div>
-</section>
 
-<!-- Приветствие + Календарь -->
-<section>
-    <div class="container">
-        <div class="fade-up">
-            <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--wine);margin-bottom:20px;">Дорогие гости,</p>
-            <p>Приглашаем разделить с нами этот важный момент!</p>
-            <p style="font-size:0.85rem;color:#6B6B6B;">Мы сказали друг другу «да» и теперь готовим день нашей свадьбы, который запомнится на всю жизнь!</p>
+    <!-- HERO -->
+    <section class="hero fade-up">
+        <p class="invite-text">you are invited</p>
+        <p class="subtitle">мы женимся</p>
+        <div class="names">
+            <h1>Дмитрий</h1>
+            <span class="and-symbol">&</span>
+            <h1>Кристина</h1>
         </div>
-        <div class="calendar-wrapper fade-up">
-            <div class="calendar-month">Июль 2026</div>
-            <div class="calendar-grid" id="calendarGrid"></div>
+        <div class="photo-pair" id="heroPhotos">
+            <img src="https://i.imgur.com/BD7ghSq.jpg" alt="Фото пары 1">
+            <img src="https://i.imgur.com/oHeYNH2.jpg" alt="Фото пары 2">
         </div>
-    </div>
-</section>
-
-<div class="container"><div class="section-divider fade-up"></div></div>
-
-<!-- Кубики с рандомным перемещением -->
-<section>
-    <div class="container fade-up">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--brown);margin-bottom:15px;">Потряси телефон или нажми на кубики!</p>
-        <div class="dice-playground" id="dicePlayground">
-            <div class="dice" id="dice1">⚀</div>
-            <div class="dice" id="dice2">⚅</div>
+        <div class="date-block">
+            <div class="day">24</div>
+            <div class="day">07</div>
+            <div class="month-year">июль 2026</div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Место -->
-<section>
-    <div class="container">
-        <div class="elegant-card card-location fade-up">
-            <div class="card-ornament"></div>
-            <span class="label">wedding location</span>
-            <h3>Парк-отель «Спасское»</h3>
-            <p>Загородный отель<br>г. Рыбинск, Ярославская область</p>
-        </div>
-    </div>
-</section>
-
-<!-- Тайминг -->
-<section>
-    <div class="container">
-        <div class="elegant-card card-time fade-up">
-            <div class="card-ornament"></div>
-            <span class="label">time</span>
-            <p><strong>14:00</strong> — сбор гостей, фуршет</p>
-            <p><strong>15:00</strong> — начало церемонии</p>
-            <p><strong>23:00</strong> — завершение вечера</p>
-        </div>
-    </div>
-</section>
-
-<!-- Таймер -->
-<section class="timer-section">
-    <div class="container fade-up">
-        <div class="timer-grid" id="timer">
-            <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">дней</div></div>
-            <span class="timer-separator">:</span>
-            <div class="timer-item"><div class="timer-number" id="hours">00</div><div class="timer-label">часов</div></div>
-            <span class="timer-separator">:</span>
-            <div class="timer-item"><div class="timer-number" id="minutes">00</div><div class="timer-label">минут</div></div>
-            <span class="timer-separator">:</span>
-            <div class="timer-item"><div class="timer-number" id="seconds">00</div><div class="timer-label">секунд</div></div>
-        </div>
-        <p class="timer-note">До свадьбы осталось</p>
-    </div>
-</section>
-
-<!-- Дресс-код -->
-<section>
-    <div class="container">
-        <div class="elegant-card card-dress fade-up">
-            <div class="card-ornament"></div>
-            <span class="label">dress code</span>
-            <p>Для вашего удобства мы подобрали примеры образов, которыми вы можете вдохновиться</p>
-            <p>Будем рады, если вы поддержите цветовую гамму нашего праздника</p>
-            <div class="color-palette">
-                <div class="color-circle" style="background-color:#7B8D5A;" title="Оливковый"></div>
-                <div class="color-circle" style="background-color:#8B6F5C;" title="Коричневый"></div>
-                <div class="color-circle" style="background-color:#7A3B48;" title="Винный"></div>
-                <div class="color-circle" style="background-color:#E8DDD3;" title="Бежевый"></div>
-                <div class="color-circle" style="background-color:#C9B28B;" title="Золотой"></div>
+    <!-- Фрисби-анимация с пиксельными человечками -->
+    <section class="frisbee-section">
+        <div class="container fade-up">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--wine);margin-bottom:10px;">Любовь в движении</p>
+            <div class="frisbee-scene" id="frisbeeScene">
+                <canvas class="pixel-character groom" id="groomCanvas" width="48" height="72"></canvas>
+                <canvas class="pixel-frisbee" id="frisbeeCanvas" width="32" height="32"></canvas>
+                <canvas class="pixel-character bride" id="brideCanvas" width="48" height="72"></canvas>
+                <div class="pixel-hearts" id="hearts1" style="top:20%;left:58%;">💕</div>
+                <div class="pixel-hearts" id="hearts2" style="top:15%;left:30%;">💖</div>
             </div>
-            <button class="btn-outline" onclick="openModal()">Посмотреть образы</button>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Подарки -->
-<section>
-    <div class="container">
-        <div class="elegant-card card-gift fade-up">
-            <div class="card-ornament"></div>
-            <span class="label">подарки</span>
-            <p>Ваше присутствие для нас — лучший подарок.<br>Если вы захотите порадовать нас дополнительно —<br>будем благодарны за вклад в наше будущее в конверте</p>
+    <!-- Приветствие + Календарь -->
+    <section>
+        <div class="container">
+            <div class="fade-up">
+                <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:var(--wine);margin-bottom:20px;">Дорогие гости,</p>
+                <p>Приглашаем разделить с нами этот важный момент!</p>
+                <p style="font-size:0.85rem;color:#6B6B6B;">Мы сказали друг другу «да» и теперь готовим день нашей свадьбы, который запомнится на всю жизнь!</p>
+            </div>
+            <div class="calendar-wrapper fade-up">
+                <div class="calendar-month">Июль 2026</div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
         </div>
-        <div class="photo-single fade-up">
-            <img src="https://i.imgur.com/a6R7DRe.jpg" alt="Фото молодоженов">
+    </section>
+
+    <div class="container"><div class="section-divider fade-up"></div></div>
+
+    <!-- Кубики -->
+    <section>
+        <div class="container fade-up">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--brown);margin-bottom:15px;">Потряси телефон или нажми на кубики!</p>
+            <div class="dice-playground" id="dicePlayground">
+                <div class="dice" id="dice1">⚀</div>
+                <div class="dice" id="dice2">⚅</div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Дети -->
-<section>
-    <div class="container">
-        <div class="elegant-card card-details fade-up">
-            <div class="card-ornament"></div>
-            <span class="label">details</span>
-            <p><strong>Маленькие гости</strong></p>
-            <p>К сожалению, на нашем торжестве не предусмотрены условия для маленьких гостей, поэтому просим вас оставить детей в надежных руках на этот вечер</p>
+    <!-- Место -->
+    <section>
+        <div class="container">
+            <div class="elegant-card card-location fade-up">
+                <div class="card-ornament"></div>
+                <span class="label">wedding location</span>
+                <h3>Парк-отель «Спасское»</h3>
+                <p>Загородный отель<br>г. Рыбинск, Ярославская область</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<div class="container"><div class="section-divider fade-up"></div></div>
+    <!-- Тайминг -->
+    <section>
+        <div class="container">
+            <div class="elegant-card card-time fade-up">
+                <div class="card-ornament"></div>
+                <span class="label">time</span>
+                <p><strong>14:00</strong> — сбор гостей, фуршет</p>
+                <p><strong>15:00</strong> — начало церемонии</p>
+                <p><strong>23:00</strong> — завершение вечера</p>
+            </div>
+        </div>
+    </section>
 
-<!-- RSVP -->
-<section>
-    <div class="container">
-        <p class="fade-up" style="text-align:center;margin-bottom:35px;">Пожалуйста, подтвердите свое присутствие, заполнив анкету ниже,<br>это поможет нам в организации нашего праздника</p>
-        <div class="rsvp-form fade-up" id="rsvpFormContainer">
-            <form id="rsvpForm">
-                <div class="form-group"><label>Имя и Фамилия</label><input type="text" id="guestName" placeholder="Введите ваше имя" required></div>
-                <div class="form-group"><label>Телефон</label><input type="tel" id="guestPhone" placeholder="+7 (___) ___-__-__"></div>
-                <div class="form-group"><label>Планируете присутствовать?</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="attendance" value="yes" required> Да, с удовольствием</label>
-                        <label><input type="radio" name="attendance" value="no"> К сожалению, нет</label>
-                    </div>
+    <!-- Таймер -->
+    <section class="timer-section">
+        <div class="container fade-up">
+            <div class="timer-grid" id="timer">
+                <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">дней</div></div>
+                <span class="timer-separator">:</span>
+                <div class="timer-item"><div class="timer-number" id="hours">00</div><div class="timer-label">часов</div></div>
+                <span class="timer-separator">:</span>
+                <div class="timer-item"><div class="timer-number" id="minutes">00</div><div class="timer-label">минут</div></div>
+                <span class="timer-separator">:</span>
+                <div class="timer-item"><div class="timer-number" id="seconds">00</div><div class="timer-label">секунд</div></div>
+            </div>
+            <p class="timer-note">До свадьбы осталось</p>
+        </div>
+    </section>
+
+    <!-- Дресс-код -->
+    <section>
+        <div class="container">
+            <div class="elegant-card card-dress fade-up">
+                <div class="card-ornament"></div>
+                <span class="label">dress code</span>
+                <p>Для вашего удобства мы подобрали примеры образов, которыми вы можете вдохновиться</p>
+                <p>Будем рады, если вы поддержите цветовую гамму нашего праздника</p>
+                <div class="color-palette">
+                    <div class="color-circle" style="background-color:#7B8D5A;" title="Оливковый"></div>
+                    <div class="color-circle" style="background-color:#8B6F5C;" title="Коричневый"></div>
+                    <div class="color-circle" style="background-color:#7A3B48;" title="Винный"></div>
+                    <div class="color-circle" style="background-color:#E8DDD3;" title="Бежевый"></div>
+                    <div class="color-circle" style="background-color:#C9B28B;" title="Золотой"></div>
                 </div>
-                <div class="form-group"><label>Предпочтения по напиткам</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="drink" value="red_wine"> Красное вино</label>
-                        <label><input type="checkbox" name="drink" value="white_wine"> Белое вино</label>
-                        <label><input type="checkbox" name="drink" value="champagne"> Шампанское</label>
-                        <label><input type="checkbox" name="drink" value="spirits"> Крепкие напитки</label>
-                        <label><input type="checkbox" name="drink" value="non_alcoholic"> Безалкогольные напитки</label>
+                <button class="btn-outline" onclick="openModal()">Посмотреть образы</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подарки -->
+    <section>
+        <div class="container">
+            <div class="elegant-card card-gift fade-up">
+                <div class="card-ornament"></div>
+                <span class="label">подарки</span>
+                <p>Ваше присутствие для нас — лучший подарок.<br>Если вы захотите порадовать нас дополнительно —<br>будем благодарны за вклад в наше будущее в конверте</p>
+            </div>
+            <div class="photo-single fade-up">
+                <img src="https://i.imgur.com/a6R7DRe.jpg" alt="Фото молодоженов">
+            </div>
+        </div>
+    </section>
+
+    <!-- Дети -->
+    <section>
+        <div class="container">
+            <div class="elegant-card card-details fade-up">
+                <div class="card-ornament"></div>
+                <span class="label">details</span>
+                <p><strong>Маленькие гости</strong></p>
+                <p>К сожалению, на нашем торжестве не предусмотрены условия для маленьких гостей, поэтому просим вас оставить детей в надежных руках на этот вечер</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="section-divider fade-up"></div></div>
+
+    <!-- RSVP -->
+    <section>
+        <div class="container">
+            <p class="fade-up" style="text-align:center;margin-bottom:35px;">Пожалуйста, подтвердите свое присутствие, заполнив анкету ниже,<br>это поможет нам в организации нашего праздника</p>
+            <div class="rsvp-form fade-up" id="rsvpFormContainer">
+                <form id="rsvpForm">
+                    <div class="form-group"><label>Имя и Фамилия</label><input type="text" id="guestName" placeholder="Введите ваше имя" required></div>
+                    <div class="form-group"><label>Телефон</label><input type="tel" id="guestPhone" placeholder="+7 (___) ___-__-__"></div>
+                    <div class="form-group"><label>Планируете присутствовать?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="attendance" value="yes" required> Да, с удовольствием</label>
+                            <label><input type="radio" name="attendance" value="no"> К сожалению, нет</label>
+                        </div>
                     </div>
-                </div>
-                <button type="submit">Отправить</button>
-            </form>
-            <div class="form-success" id="formSuccess"><p>✨ Спасибо! Ваш ответ принят.</p><p style="font-size:0.85rem;margin-top:12px;">Будем ждать встречи!</p></div>
+                    <div class="form-group"><label>Предпочтения по напиткам</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="drink" value="red_wine"> Красное вино</label>
+                            <label><input type="checkbox" name="drink" value="white_wine"> Белое вино</label>
+                            <label><input type="checkbox" name="drink" value="champagne"> Шампанское</label>
+                            <label><input type="checkbox" name="drink" value="spirits"> Крепкие напитки</label>
+                            <label><input type="checkbox" name="drink" value="non_alcoholic"> Безалкогольные напитки</label>
+                        </div>
+                    </div>
+                    <button type="submit">Отправить</button>
+                </form>
+                <div class="form-success" id="formSuccess"><p>✨ Спасибо! Ваш ответ принят.</p><p style="font-size:0.85rem;margin-top:12px;">Будем ждать встречи!</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer fade-up"><p>с любовью,</p><p>Дмитрий и Кристина</p></div>
+
+    <!-- Модальное окно -->
+    <div class="modal-overlay" id="dressModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h2 style="color:var(--wine);">Образы для вдохновения</h2>
+            <div class="dress-grid">
+                <img src="https://i.imgur.com/4gy7h3q.jpg" alt="Образ 1">
+                <img src="https://i.imgur.com/UcLblai.jpg" alt="Образ 2">
+                <img src="https://i.imgur.com/5MyaaxN.jpg" alt="Образ 3">
+                <img src="https://i.imgur.com/IQhKIxX.jpg" alt="Образ 4">
+            </div>
         </div>
     </div>
-</section>
 
-<!-- Footer -->
-<div class="footer fade-up"><p>с любовью,</p><p>Дмитрий и Кристина</p></div>
+    <script>
+        // ========== КАЛЕНДАРЬ ==========
+        (function(){
+            const grid=document.getElementById('calendarGrid');
+            ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].forEach(d=>{const h=document.createElement('div');h.className='day-header';h.textContent=d;grid.appendChild(h);});
+            for(let i=0;i<2;i++){const e=document.createElement('div');e.className='day other-month';grid.appendChild(e);}
+            for(let d=1;d<=31;d++){const c=document.createElement('div');c.className='day';c.textContent=d;if(d===24){c.classList.add('wedding-day');c.innerHTML='24 <span style="font-size:0.5rem;display:block;">♥</span>';}grid.appendChild(c);}
+        })();
 
-<!-- Модальное окно -->
-<div class="modal-overlay" id="dressModal">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal()">✕</button>
-        <h2 style="color:var(--wine);">Образы для вдохновения</h2>
-        <div class="dress-grid">
-            <img src="https://i.imgur.com/4gy7h3q.jpg" alt="Образ 1">
-            <img src="https://i.imgur.com/UcLblai.jpg" alt="Образ 2">
-            <img src="https://i.imgur.com/5MyaaxN.jpg" alt="Образ 3">
-            <img src="https://i.imgur.com/IQhKIxX.jpg" alt="Образ 4">
-        </div>
-    </div>
-</div>
+        // ========== ТАЙМЕР ==========
+        const weddingDate=new Date('2026-07-24T15:00:00').getTime();
+        setInterval(()=>{
+            const n=new Date().getTime(),d=weddingDate-n;
+            if(d<0){['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');return;}
+            document.getElementById('days').textContent=String(Math.floor(d/86400000)).padStart(2,'0');
+            document.getElementById('hours').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
+            document.getElementById('minutes').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');
+            document.getElementById('seconds').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');
+        },1000);
 
-<script>
-// ========== КАЛЕНДАРЬ ==========
-(function(){
-    const grid=document.getElementById('calendarGrid');
-    ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].forEach(d=>{const h=document.createElement('div');h.className='day-header';h.textContent=d;grid.appendChild(h);});
-    for(let i=0;i<2;i++){const e=document.createElement('div');e.className='day other-month';grid.appendChild(e);}
-    for(let d=1;d<=31;d++){const c=document.createElement('div');c.className='day';c.textContent=d;if(d===24){c.classList.add('wedding-day');c.innerHTML='24 <span style="font-size:0.5rem;display:block;">♥</span>';}grid.appendChild(c);}
-})();
+        // ========== АНИМАЦИИ ПОЯВЛЕНИЯ ==========
+        const observer=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.15});
+        document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+        const photoObserver=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.2});
+        if(document.getElementById('heroPhotos'))photoObserver.observe(document.getElementById('heroPhotos'));
 
-// ========== ТАЙМЕР ==========
-const weddingDate=new Date('2026-07-24T15:00:00').getTime();
-setInterval(()=>{
-    const n=new Date().getTime(),d=weddingDate-n;
-    if(d<0){['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');return;}
-    document.getElementById('days').textContent=String(Math.floor(d/86400000)).padStart(2,'0');
-    document.getElementById('hours').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
-    document.getElementById('minutes').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');
-    document.getElementById('seconds').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');
-},1000);
+        // ========== ПИКСЕЛЬНЫЕ ЧЕЛОВЕЧКИ + ФРИСБИ ==========
 
-// ========== АНИМАЦИИ ПОЯВЛЕНИЯ ==========
-const observer=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.15});
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+        // Рисуем жениха
+        (function drawGroom(){
+            const canvas=document.getElementById('groomCanvas');
+            const ctx=canvas.getContext('2d');
+            const s=4;
+            const suit='#2C2C2C',shirt='#FFFFFF',bowtie='#7A3B48',skin='#F5D0B0',hair='#4A3728',shoe='#1A1A1A';
+            const pixels=[
+                [4,0,8,4,hair],[6,4,4,1,hair],[5,5,6,7,skin],[6,7,2,1,'#000'],[8,7,2,1,'#000'],
+                [6,10,4,1,'#C4956A'],[7,12,2,2,skin],[5,13,6,3,bowtie],[7,14,2,1,shirt],
+                [3,16,10,14,suit],[7,17,2,8,shirt],[1,17,3,12,suit],[12,17,3,12,suit],
+                [4,30,8,6,suit],[3,36,5,3,shoe],[8,36,5,3,shoe],
+            ];
+            pixels.forEach(([x,y,w,h,c])=>{ctx.fillStyle=c;ctx.fillRect(x*s,y*s,w*s,h*s);});
+        })();
 
-// Отдельно для фото
-const photoObserver=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.2});
-document.getElementById('heroPhotos')&&photoObserver.observe(document.getElementById('heroPhotos'));
+        // Рисуем невесту
+        (function drawBride(){
+            const canvas=document.getElementById('brideCanvas');
+            const ctx=canvas.getContext('2d');
+            const s=4;
+            const dress='#FAF0E6',skin='#F5D0B0',hair='#8B6914',veil='#FFFFFF',bouquet='#7B8D5A';
+            const pixels=[
+                [2,0,12,3,veil],[4,2,8,4,hair],[5,5,6,2,hair],[5,7,6,6,skin],[6,9,2,1,'#000'],
+                [8,9,2,1,'#000'],[6,11,4,1,'#D4958A'],[7,13,2,2,skin],[3,15,10,8,dress],
+                [1,16,3,10,skin],[12,16,3,10,skin],[0,20,4,5,bouquet],[0,19,2,2,'#E8DDD3'],
+                [1,23,14,12,dress],[0,35,16,3,'#F0E6D8'],
+            ];
+            pixels.forEach(([x,y,w,h,c])=>{ctx.fillStyle=c;ctx.fillRect(x*s,y*s,w*s,h*s);});
+        })();
 
-// ========== ФРИСБИ-АНИМАЦИЯ ==========
-const frisbee=document.getElementById('frisbee');
-const frisbeeScene=document.getElementById('frisbeeScene');
-let frisbeeActive=false;
+        // Рисуем тарелку
+        (function drawFrisbee(){
+            const canvas=document.getElementById('frisbeeCanvas');
+            const ctx=canvas.getContext('2d');
+            const s=4;
+            const disc='#E85D5D',rim='#C44A4A',center='#FFF';
+            const pixels=[
+                [1,3,6,2,rim],[2,2,4,1,disc],[2,4,4,1,disc],[3,1,2,1,disc],[3,5,2,1,disc],[3,3,2,1,center],
+            ];
+            pixels.forEach(([x,y,w,h,c])=>{ctx.fillStyle=c;ctx.fillRect(x*s,y*s,w*s,h*s);});
+        })();
 
-function animateFrisbee(){
-    if(frisbeeActive)return;
-    frisbeeActive=true;
-    frisbee.classList.add('flying');
-    setTimeout(()=>{
-        frisbee.classList.remove('flying');
-        frisbee.classList.add('returning');
-        setTimeout(()=>{
-            frisbee.classList.remove('returning');
-            frisbeeActive=false;
-        },1200);
-    },1200);
-}
+        // Анимация фрисби
+        const frisbeeEl=document.getElementById('frisbeeCanvas');
+        const groomEl=document.getElementById('groomCanvas');
+        const brideEl=document.getElementById('brideCanvas');
+        const hearts1=document.getElementById('hearts1');
+        const hearts2=document.getElementById('hearts2');
+        const frisbeeScene=document.getElementById('frisbeeScene');
+        let frisbeeActive=false;
 
-const frisbeeObserver=new IntersectionObserver(e=>{
-    e.forEach(e=>{if(e.isIntersecting)animateFrisbee();});
-},{threshold:0.5});
-frisbeeObserver.observe(frisbeeScene);
+        function animateFrisbee(){
+            if(frisbeeActive)return;
+            frisbeeActive=true;
+            groomEl.classList.add('throwing');
+            setTimeout(()=>groomEl.classList.remove('throwing'),600);
+            setTimeout(()=>frisbeeEl.classList.add('flying-to-bride'),200);
+            setTimeout(()=>{
+                brideEl.classList.add('catching');
+                hearts1.classList.add('show');
+                setTimeout(()=>{hearts1.classList.remove('show');brideEl.classList.remove('catching');},1200);
+            },1100);
+            setTimeout(()=>{frisbeeEl.classList.remove('flying-to-bride');frisbeeEl.classList.add('flying-to-groom');},1800);
+            setTimeout(()=>{
+                groomEl.classList.add('throwing');
+                hearts2.classList.add('show');
+                setTimeout(()=>{hearts2.classList.remove('show');groomEl.classList.remove('throwing');},1200);
+            },2700);
+            setTimeout(()=>{frisbeeEl.classList.remove('flying-to-groom');frisbeeActive=false;},3400);
+        }
 
-// Повторять анимацию при скролле обратно
-setInterval(()=>{
-    const rect=frisbeeScene.getBoundingClientRect();
-    if(rect.top<window.innerHeight&&rect.bottom>0&&!frisbeeActive){
-        if(Math.random()<0.1)animateFrisbee();
-    }
-},2000);
+        const frisbeeObserver=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)animateFrisbee();});},{threshold:0.5});
+        frisbeeObserver.observe(frisbeeScene);
+        setInterval(()=>{
+            const rect=frisbeeScene.getBoundingClientRect();
+            if(rect.top<window.innerHeight&&rect.bottom>0&&!frisbeeActive&&Math.random()<0.08)animateFrisbee();
+        },3000);
 
-// ========== КУБИКИ С РАНДОМНЫМ ПЕРЕМЕЩЕНИЕМ ==========
-const emojis=['⚀','⚁','⚂','⚃','⚄','⚅'];
-const playground=document.getElementById('dicePlayground');
+        // ========== КУБИКИ ==========
+        const emojis=['⚀','⚁','⚂','⚃','⚄','⚅'];
+        const playground=document.getElementById('dicePlayground');
 
-function getRandomPosition(die){
-    const pw=playground.clientWidth;
-    const ph=playground.clientHeight;
-    const dw=die.clientWidth;
-    const dh=die.clientHeight;
-    const x=Math.random()*(pw-dw-20)+10;
-    const y=Math.random()*(ph-dh-20)+10;
-    return {x,y};
-}
+        function getRandomPosition(die){
+            const pw=playground.clientWidth,ph=playground.clientHeight,dw=die.clientWidth,dh=die.clientHeight;
+            return {x:Math.random()*(pw-dw-20)+10,y:Math.random()*(ph-dh-20)+10};
+        }
 
-function rollDice(die){
-    if(die.classList.contains('rolling'))return;
-    die.classList.add('rolling');
-    const pos=getRandomPosition(die);
-    die.style.left=pos.x+'px';
-    die.style.top=pos.y+'px';
-    die.textContent=emojis[Math.floor(Math.random()*6)];
-    setTimeout(()=>die.classList.remove('rolling'),800);
-}
+        function rollDice(die){
+            if(die.classList.contains('rolling'))return;
+            die.classList.add('rolling');
+            const pos=getRandomPosition(die);
+            die.style.left=pos.x+'px';die.style.top=pos.y+'px';
+            die.textContent=emojis[Math.floor(Math.random()*6)];
+            setTimeout(()=>die.classList.remove('rolling'),800);
+        }
 
-document.getElementById('dice1').addEventListener('click',function(){rollDice(this);});
-document.getElementById('dice2').addEventListener('click',function(){rollDice(this);});
+        document.getElementById('dice1').addEventListener('click',function(){rollDice(this);});
+        document.getElementById('dice2').addEventListener('click',function(){rollDice(this);});
 
-// Начальные позиции
-(function initDice(){
-    const d1=document.getElementById('dice1');
-    const d2=document.getElementById('dice2');
-    d1.style.left='30px';
-    d1.style.top='80px';
-    d2.style.left=(playground.clientWidth-90)+'px';
-    d2.style.top='80px';
-})();
+        (function initDice(){
+            const d1=document.getElementById('dice1'),d2=document.getElementById('dice2');
+            d1.style.left='30px';d1.style.top='80px';
+            d2.style.left=(playground.clientWidth-90)+'px';d2.style.top='80px';
+        })();
 
-// Тряска телефона
-window.addEventListener('devicemotion',function(e){
-    const acc=e.accelerationIncludingGravity;
-    if(acc&&(Math.abs(acc.x)>15||Math.abs(acc.y)>15||Math.abs(acc.z)>15)){
-        rollDice(document.getElementById('dice1'));
-        rollDice(document.getElementById('dice2'));
-    }
-});
+        window.addEventListener('devicemotion',function(e){
+            const acc=e.accelerationIncludingGravity;
+            if(acc&&(Math.abs(acc.x)>15||Math.abs(acc.y)>15||Math.abs(acc.z)>15)){
+                rollDice(document.getElementById('dice1'));
+                rollDice(document.getElementById('dice2'));
+            }
+        });
 
-// ========== МОДАЛЬНОЕ ОКНО ==========
-function openModal(){document.getElementById('dressModal').classList.add('active');document.body.style.overflow='hidden';}
-function closeModal(){document.getElementById('dressModal').classList.remove('active');document.body.style.overflow='';}
-document.getElementById('dressModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+        // ========== МОДАЛЬНОЕ ОКНО ==========
+        function openModal(){document.getElementById('dressModal').classList.add('active');document.body.style.overflow='hidden';}
+        function closeModal(){document.getElementById('dressModal').classList.remove('active');document.body.style.overflow='';}
+        document.getElementById('dressModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
-// ========== RSVP ==========
-document.getElementById('rsvpForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    const n=document.getElementById('guestName').value.trim();
-    const a=document.querySelector('input[name="attendance"]:checked');
-    if(!n||!a){alert('Заполните имя и отметьте присутствие.');return;}
-    document.getElementById('rsvpForm').style.display='none';
-    document.getElementById('formSuccess').style.display='block';
-});
-</script>
+        // ========== RSVP ==========
+        document.getElementById('rsvpForm').addEventListener('submit',function(e){
+            e.preventDefault();
+            const n=document.getElementById('guestName').value.trim();
+            const a=document.querySelector('input[name="attendance"]:checked');
+            if(!n||!a){alert('Заполните имя и отметьте присутствие.');return;}
+            document.getElementById('rsvpForm').style.display='none';
+            document.getElementById('formSuccess').style.display='block';
+        });
+    </script>
+
 </body>
 </html>
