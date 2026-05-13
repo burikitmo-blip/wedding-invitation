@@ -25,7 +25,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -46,25 +45,14 @@
 
         /* ----- Бегущая строка ----- */
         .marquee {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            background: var(--olive);
-            color: white;
-            padding: 10px 0;
-            z-index: 1000;
-            overflow: hidden;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-weight: 400;
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: var(--olive); color: white;
+            padding: 10px 0; z-index: 1000; overflow: hidden;
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 0.3em; font-weight: 400;
         }
-        .marquee__inner {
-            display: flex;
-            animation: marquee 20s linear infinite;
-            white-space: nowrap;
-        }
+        .marquee__inner { display: flex; animation: marquee 20s linear infinite; white-space: nowrap; }
         .marquee span { padding: 0 30px; }
-
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -72,8 +60,7 @@
 
         /* ----- Анимации ----- */
         .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
+            opacity: 0; transform: translateY(40px);
             transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -81,243 +68,195 @@
         /* ----- Hero ----- */
         .hero {
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px 40px;
-            position: relative;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding: 100px 20px 40px;
             background: linear-gradient(180deg, rgba(123,141,90,0.04) 0%, transparent 50%);
         }
-
         .hero .invite-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--wine);
-            margin-bottom: 30px;
+            font-size: 1.1rem; font-style: italic;
+            color: var(--wine); margin-bottom: 30px;
         }
         .hero .subtitle {
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.22em;
-            color: var(--brown);
-            margin-bottom: 12px;
-            font-weight: 400;
+            font-size: 0.78rem; text-transform: uppercase;
+            letter-spacing: 0.22em; color: var(--brown);
+            margin-bottom: 12px; font-weight: 400;
         }
-        .hero .names {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
+        .hero .names { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            font-weight: 400;
-            color: var(--text);
-            letter-spacing: 0.05em;
+            font-size: 4rem; font-weight: 400;
+            color: var(--text); letter-spacing: 0.05em;
         }
         .hero .and-symbol {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            color: var(--wine);
-            font-style: italic;
+            font-size: 2.8rem; color: var(--wine); font-style: italic;
         }
         .hero .date-block { margin-top: 50px; }
         .hero .day {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
-            font-weight: 400;
-            color: var(--olive);
-            line-height: 1;
+            font-size: 5rem; font-weight: 400;
+            color: var(--olive); line-height: 1;
         }
         .hero .month-year {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--brown);
-            margin-top: 8px;
+            font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 0.25em; color: var(--brown); margin-top: 8px;
         }
 
         /* ----- Фото с выездом ----- */
         .photo-pair {
-            display: flex;
-            gap: 20px;
-            max-width: 600px;
-            margin: 30px auto 0;
-            overflow: hidden;
+            display: flex; gap: 20px;
+            max-width: 600px; margin: 30px auto 0; overflow: hidden;
         }
         .photo-pair img {
-            width: 50%;
-            aspect-ratio: 3/4;
-            object-fit: cover;
+            width: 50%; aspect-ratio: 3/4; object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s;
             opacity: 0;
         }
-        .photo-pair img:first-child {
-            transform: translateX(-100px);
+        .photo-pair img:first-child { transform: translateX(-120px); }
+        .photo-pair img:last-child { transform: translateX(120px); }
+        .photo-pair.visible img { opacity: 1; transform: translateX(0); }
+
+        /* ----- Фрисби-анимация ----- */
+        .frisbee-section {
+            position: relative;
+            padding: 100px 0;
+            overflow: hidden;
+            min-height: 400px;
         }
-        .photo-pair img:last-child {
-            transform: translateX(100px);
+        .frisbee-scene {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 300px;
         }
-        .photo-pair.visible img {
+        .character {
+            position: absolute;
+            bottom: 0;
+            font-size: 4rem;
+            transition: all 0.3s;
+        }
+        .character.groom { left: 10%; }
+        .character.bride { right: 10%; transform: scaleX(-1); }
+        .frisbee {
+            position: absolute;
+            font-size: 2.5rem;
+            top: 40%;
+            left: 30%;
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            opacity: 0;
+            transform: rotate(0deg);
+        }
+        .frisbee.flying {
+            left: 60%;
             opacity: 1;
-            transform: translateX(0);
+            transform: rotate(720deg);
+        }
+        .frisbee.returning {
+            left: 30%;
+            opacity: 1;
+            transform: rotate(1440deg);
         }
 
         /* ----- Календарь ----- */
         .calendar-wrapper {
             background: var(--white);
             border: 1px solid var(--border);
-            max-width: 450px;
-            margin: 30px auto 0;
+            max-width: 450px; margin: 30px auto 0;
             padding: 30px 25px;
             box-shadow: 0 4px 25px rgba(0,0,0,0.03);
         }
         .calendar-month {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--wine);
-            margin-bottom: 15px;
+            font-size: 1.5rem; color: var(--wine); margin-bottom: 15px;
         }
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 6px;
-            text-align: center;
-            font-size: 0.85rem;
-        }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; font-size: 0.85rem; }
         .calendar-grid .day-header {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            color: var(--brown);
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            padding-bottom: 8px;
+            font-size: 0.65rem; text-transform: uppercase;
+            color: var(--brown); font-weight: 500;
+            letter-spacing: 0.1em; padding-bottom: 8px;
         }
         .calendar-grid .day {
-            padding: 10px 4px;
-            border-radius: 50%;
-            cursor: default;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            color: var(--text);
+            padding: 10px 4px; border-radius: 50%;
+            cursor: default; font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem; color: var(--text);
         }
         .calendar-grid .day.other-month { color: #ccc; }
         .calendar-grid .day.wedding-day {
-            background: var(--wine);
-            color: white;
-            font-weight: 600;
+            background: var(--wine); color: white; font-weight: 600;
             animation: heartbeat 1.5s ease-in-out infinite;
         }
         @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            15% { transform: scale(1.15); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.1); }
-            60% { transform: scale(1); }
+            0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.1)}60%{transform:scale(1)}
         }
 
         /* ----- Таймер ----- */
         .timer-section {
             background: linear-gradient(135deg, var(--olive), var(--olive-light));
-            padding: 60px 0;
-            color: white;
+            padding: 60px 0; color: white;
         }
         .timer-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: nowrap;
+            display: flex; justify-content: center;
+            align-items: center; gap: 10px; flex-wrap: nowrap;
         }
         .timer-item {
-            text-align: center;
-            min-width: 70px;
+            text-align: center; min-width: 70px;
             background: rgba(255,255,255,0.15);
-            border-radius: 12px;
-            padding: 15px 12px;
+            border-radius: 12px; padding: 15px 12px;
             backdrop-filter: blur(10px);
         }
         .timer-separator {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: rgba(255,255,255,0.7);
-            padding: 0 2px;
+            font-size: 2.5rem; color: rgba(255,255,255,0.7); padding: 0 2px;
         }
         .timer-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 600;
-            line-height: 1;
+            font-size: 3rem; font-weight: 600; line-height: 1;
         }
         .timer-label {
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-top: 4px;
-            opacity: 0.9;
+            font-size: 0.6rem; text-transform: uppercase;
+            letter-spacing: 0.15em; margin-top: 4px; opacity: 0.9;
         }
         .timer-note {
-            margin-top: 25px;
-            font-size: 0.9rem;
-            font-style: italic;
-            font-family: 'Cormorant Garamond', serif;
-            opacity: 0.9;
+            margin-top: 25px; font-size: 0.9rem;
+            font-style: italic; font-family: 'Cormorant Garamond', serif; opacity: 0.9;
         }
 
         /* ----- Карточки ----- */
         section { padding: 80px 0; text-align: center; }
 
         .elegant-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            padding: 60px 50px;
-            margin-bottom: 24px;
-            text-align: center;
-            position: relative;
+            background: var(--white); border: 1px solid var(--border);
+            padding: 60px 50px; margin-bottom: 24px;
+            text-align: center; position: relative;
             box-shadow: 0 4px 30px rgba(0,0,0,0.03);
-            transition: all 0.4s;
-            border-radius: 2px;
+            transition: all 0.4s; border-radius: 2px;
         }
         .elegant-card:hover {
             box-shadow: 0 12px 45px rgba(0,0,0,0.06);
             transform: translateY(-2px);
         }
         .elegant-card .card-ornament {
-            width: 50px;
-            height: 2px;
-            margin: 0 auto 28px;
-            border-radius: 1px;
+            width: 50px; height: 2px;
+            margin: 0 auto 28px; border-radius: 1px;
         }
         .elegant-card h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            font-weight: 500;
-            letter-spacing: 0.04em;
+            font-size: 2rem; margin-bottom: 20px;
+            font-weight: 500; letter-spacing: 0.04em;
         }
-        .elegant-card p {
-            font-size: 0.95rem;
-            line-height: 2.2;
-        }
+        .elegant-card p { font-size: 0.95rem; line-height: 2.2; }
         .elegant-card .label {
-            display: inline-block;
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.25em;
-            margin-bottom: 22px;
-            font-weight: 500;
-            padding: 7px 24px;
-            border-radius: 2px;
+            display: inline-block; font-size: 0.68rem;
+            text-transform: uppercase; letter-spacing: 0.25em;
+            margin-bottom: 22px; font-weight: 500;
+            padding: 7px 24px; border-radius: 2px;
         }
 
-        /* Цветовые схемы карточек */
+        /* Цветовые схемы */
         .card-location { border-left: 3px solid var(--olive); }
         .card-location .card-ornament { background: var(--olive); }
         .card-location h3 { color: var(--olive); }
@@ -345,55 +284,49 @@
 
         /* ----- Кнопка ----- */
         .btn-outline {
-            display: inline-block;
-            padding: 14px 40px;
-            border: 1px solid var(--wine);
-            color: var(--wine);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            cursor: pointer;
-            background: transparent;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.4s;
-            margin-top: 20px;
+            display: inline-block; padding: 14px 40px;
+            border: 1px solid var(--wine); color: var(--wine);
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 0.2em; cursor: pointer;
+            background: transparent; font-family: 'Montserrat', sans-serif;
+            transition: all 0.4s; margin-top: 20px;
         }
         .btn-outline:hover { background: var(--wine); color: white; }
 
-        /* ----- Кубики ----- */
-        .dice-container {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 30px 0;
+        /* ----- Кубики с рандомным перемещением ----- */
+        .dice-playground {
+            position: relative;
+            max-width: 600px; height: 250px;
+            margin: 0 auto;
+            background: var(--white);
+            border: 2px dashed var(--beige-dark);
+            border-radius: 16px;
+            overflow: hidden;
         }
         .dice {
-            width: 70px;
-            height: 70px;
+            position: absolute;
+            width: 60px; height: 60px;
             background: var(--white);
             border: 2px solid var(--brown);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
             font-size: 2rem;
-            color: var(--wine);
             cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: left 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.2),
+                        top 0.8s cubic-bezier(0.25, 0.8, 0.25, 1.2),
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
             user-select: none;
+            z-index: 2;
         }
-        .dice:active { transform: scale(0.9); }
         .dice.rolling {
-            animation: diceRoll 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            animation: diceBounce 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        @keyframes diceRoll {
-            0% { transform: rotate(0deg) scale(1); }
-            25% { transform: rotate(90deg) scale(1.15); }
-            50% { transform: rotate(200deg) scale(1.05); }
-            75% { transform: rotate(310deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+        @keyframes diceBounce {
+            0% { transform: scale(1) rotate(0deg); }
+            30% { transform: scale(1.3) rotate(180deg); }
+            60% { transform: scale(0.8) rotate(360deg); }
+            100% { transform: scale(1) rotate(540deg); }
         }
 
         /* ----- Модальное окно ----- */
@@ -415,17 +348,11 @@
             font-size: 1.5rem; cursor: pointer; color: var(--wine);
             background: none; border: none;
         }
-        .dress-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 25px;
-        }
-        .dress-grid img {
-            width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px;
-        }
+        .dress-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 25px; }
+        .dress-grid img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; }
 
-        /* ----- Цвета ----- */
-        .color-palette {
-            display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap;
-        }
+        /* ----- Цветовая палитра ----- */
+        .color-palette { display: flex; justify-content: center; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
         .color-circle {
             width: 50px; height: 50px; border-radius: 50%;
             border: 2px solid var(--border); transition: transform 0.3s;
@@ -443,11 +370,13 @@
         .form-group { margin-bottom: 28px; }
         .form-group label {
             display: block; font-size: 0.78rem; text-transform: uppercase;
-            letter-spacing: 0.12em; margin-bottom: 10px; color: var(--text); font-weight: 400;
+            letter-spacing: 0.12em; margin-bottom: 10px;
+            color: var(--text); font-weight: 400;
         }
         .form-group input[type="text"],
         .form-group input[type="tel"] {
-            width: 100%; padding: 15px 18px; border: 1px solid var(--border);
+            width: 100%; padding: 15px 18px;
+            border: 1px solid var(--border);
             font-family: 'Montserrat', sans-serif; font-size: 0.9rem;
             background: var(--bg); color: var(--text); transition: all 0.3s;
         }
@@ -455,16 +384,16 @@
         .radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
         .radio-group label, .checkbox-group label {
             display: flex; align-items: center; gap: 12px;
-            font-size: 0.9rem; text-transform: none; letter-spacing: 0.02em; cursor: pointer;
+            font-size: 0.9rem; text-transform: none;
+            letter-spacing: 0.02em; cursor: pointer;
         }
-        input[type="radio"], input[type="checkbox"] {
-            accent-color: var(--wine); width: 17px; height: 17px;
-        }
+        input[type="radio"], input[type="checkbox"] { accent-color: var(--wine); width: 17px; height: 17px; }
         button[type="submit"] {
             background: var(--olive); color: white; border: none;
             padding: 17px 55px; font-family: 'Montserrat', sans-serif;
-            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.22em;
-            cursor: pointer; transition: all 0.4s; display: block;
+            font-size: 0.78rem; text-transform: uppercase;
+            letter-spacing: 0.22em; cursor: pointer;
+            transition: all 0.4s; display: block;
             margin: 35px auto 0; width: 100%; max-width: 380px;
         }
         button[type="submit"]:hover { background: var(--olive-light); }
@@ -473,17 +402,15 @@
         /* ----- Footer ----- */
         .footer {
             text-align: center; padding: 80px 20px;
-            font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
-            font-style: italic; color: var(--wine);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem; font-style: italic; color: var(--wine);
         }
         .footer::before {
             content: ''; display: block; width: 60px; height: 2px;
             background: var(--wine); margin: 0 auto 30px; opacity: 0.4;
         }
 
-        .photo-single {
-            max-width: 450px; margin: 30px auto 0;
-        }
+        .photo-single { max-width: 450px; margin: 30px auto 0; }
         .photo-single img {
             width: 100%; aspect-ratio: 4/5; object-fit: cover;
             border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
@@ -509,7 +436,11 @@
             .elegant-card { padding: 35px 22px; }
             .rsvp-form { padding: 35px 22px; }
             .dress-grid { grid-template-columns: 1fr; }
-            .dice { width: 55px; height: 55px; font-size: 1.5rem; }
+            .dice { width: 50px; height: 50px; font-size: 1.5rem; }
+            .dice-playground { height: 200px; }
+            .frisbee-scene { height: 200px; }
+            .character { font-size: 3rem; }
+            .frisbee { font-size: 2rem; }
         }
     </style>
 </head>
@@ -542,6 +473,18 @@
     </div>
 </section>
 
+<!-- Фрисби-анимация -->
+<section class="frisbee-section">
+    <div class="container fade-up">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--wine);margin-bottom:10px;">Любовь в движении</p>
+        <div class="frisbee-scene" id="frisbeeScene">
+            <div class="character groom">🤵</div>
+            <div class="frisbee" id="frisbee">🥏</div>
+            <div class="character bride">👰</div>
+        </div>
+    </div>
+</section>
+
 <!-- Приветствие + Календарь -->
 <section>
     <div class="container">
@@ -559,13 +502,13 @@
 
 <div class="container"><div class="section-divider fade-up"></div></div>
 
-<!-- Кубики -->
+<!-- Кубики с рандомным перемещением -->
 <section>
     <div class="container fade-up">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--brown);margin-bottom:10px;">Потряси телефон или нажми на кубики!</p>
-        <div class="dice-container" id="diceContainer">
-            <div class="dice" id="dice1">🎲</div>
-            <div class="dice" id="dice2">🎲</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--brown);margin-bottom:15px;">Потряси телефон или нажми на кубики!</p>
+        <div class="dice-playground" id="dicePlayground">
+            <div class="dice" id="dice1">⚀</div>
+            <div class="dice" id="dice2">⚅</div>
         </div>
     </div>
 </section>
@@ -707,7 +650,7 @@
 </div>
 
 <script>
-// Календарь
+// ========== КАЛЕНДАРЬ ==========
 (function(){
     const grid=document.getElementById('calendarGrid');
     ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].forEach(d=>{const h=document.createElement('div');h.className='day-header';h.textContent=d;grid.appendChild(h);});
@@ -715,35 +658,117 @@
     for(let d=1;d<=31;d++){const c=document.createElement('div');c.className='day';c.textContent=d;if(d===24){c.classList.add('wedding-day');c.innerHTML='24 <span style="font-size:0.5rem;display:block;">♥</span>';}grid.appendChild(c);}
 })();
 
-// Таймер
+// ========== ТАЙМЕР ==========
 const weddingDate=new Date('2026-07-24T15:00:00').getTime();
 setInterval(()=>{
     const n=new Date().getTime(),d=weddingDate-n;
     if(d<0){['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');return;}
-    document.getElementById('days').textContent=String(Math.floor(d/(86400000))).padStart(2,'0');
+    document.getElementById('days').textContent=String(Math.floor(d/86400000)).padStart(2,'0');
     document.getElementById('hours').textContent=String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
     document.getElementById('minutes').textContent=String(Math.floor((d%3600000)/60000)).padStart(2,'0');
     document.getElementById('seconds').textContent=String(Math.floor((d%60000)/1000)).padStart(2,'0');
 },1000);
 
-// Анимации
-new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.15}).observe(document.querySelector('.photo-pair'));
-document.querySelectorAll('.fade-up').forEach(el=>new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.15}).observe(el));
+// ========== АНИМАЦИИ ПОЯВЛЕНИЯ ==========
+const observer=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.15});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-// Модалка
+// Отдельно для фото
+const photoObserver=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.2});
+document.getElementById('heroPhotos')&&photoObserver.observe(document.getElementById('heroPhotos'));
+
+// ========== ФРИСБИ-АНИМАЦИЯ ==========
+const frisbee=document.getElementById('frisbee');
+const frisbeeScene=document.getElementById('frisbeeScene');
+let frisbeeActive=false;
+
+function animateFrisbee(){
+    if(frisbeeActive)return;
+    frisbeeActive=true;
+    frisbee.classList.add('flying');
+    setTimeout(()=>{
+        frisbee.classList.remove('flying');
+        frisbee.classList.add('returning');
+        setTimeout(()=>{
+            frisbee.classList.remove('returning');
+            frisbeeActive=false;
+        },1200);
+    },1200);
+}
+
+const frisbeeObserver=new IntersectionObserver(e=>{
+    e.forEach(e=>{if(e.isIntersecting)animateFrisbee();});
+},{threshold:0.5});
+frisbeeObserver.observe(frisbeeScene);
+
+// Повторять анимацию при скролле обратно
+setInterval(()=>{
+    const rect=frisbeeScene.getBoundingClientRect();
+    if(rect.top<window.innerHeight&&rect.bottom>0&&!frisbeeActive){
+        if(Math.random()<0.1)animateFrisbee();
+    }
+},2000);
+
+// ========== КУБИКИ С РАНДОМНЫМ ПЕРЕМЕЩЕНИЕМ ==========
+const emojis=['⚀','⚁','⚂','⚃','⚄','⚅'];
+const playground=document.getElementById('dicePlayground');
+
+function getRandomPosition(die){
+    const pw=playground.clientWidth;
+    const ph=playground.clientHeight;
+    const dw=die.clientWidth;
+    const dh=die.clientHeight;
+    const x=Math.random()*(pw-dw-20)+10;
+    const y=Math.random()*(ph-dh-20)+10;
+    return {x,y};
+}
+
+function rollDice(die){
+    if(die.classList.contains('rolling'))return;
+    die.classList.add('rolling');
+    const pos=getRandomPosition(die);
+    die.style.left=pos.x+'px';
+    die.style.top=pos.y+'px';
+    die.textContent=emojis[Math.floor(Math.random()*6)];
+    setTimeout(()=>die.classList.remove('rolling'),800);
+}
+
+document.getElementById('dice1').addEventListener('click',function(){rollDice(this);});
+document.getElementById('dice2').addEventListener('click',function(){rollDice(this);});
+
+// Начальные позиции
+(function initDice(){
+    const d1=document.getElementById('dice1');
+    const d2=document.getElementById('dice2');
+    d1.style.left='30px';
+    d1.style.top='80px';
+    d2.style.left=(playground.clientWidth-90)+'px';
+    d2.style.top='80px';
+})();
+
+// Тряска телефона
+window.addEventListener('devicemotion',function(e){
+    const acc=e.accelerationIncludingGravity;
+    if(acc&&(Math.abs(acc.x)>15||Math.abs(acc.y)>15||Math.abs(acc.z)>15)){
+        rollDice(document.getElementById('dice1'));
+        rollDice(document.getElementById('dice2'));
+    }
+});
+
+// ========== МОДАЛЬНОЕ ОКНО ==========
 function openModal(){document.getElementById('dressModal').classList.add('active');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('dressModal').classList.remove('active');document.body.style.overflow='';}
 document.getElementById('dressModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
-// Кубики
-const emojis=['⚀','⚁','⚂','⚃','⚄','⚅'];
-function rollDice(die){die.classList.add('rolling');setTimeout(()=>{die.textContent=emojis[Math.floor(Math.random()*6)];die.classList.remove('rolling');},600);}
-document.getElementById('dice1').addEventListener('click',function(){rollDice(this);});
-document.getElementById('dice2').addEventListener('click',function(){rollDice(this);});
-window.addEventListener('devicemotion',function(e){const acc=e.accelerationIncludingGravity;if(acc&&(Math.abs(acc.x)>15||Math.abs(acc.y)>15||Math.abs(acc.z)>15)){rollDice(document.getElementById('dice1'));rollDice(document.getElementById('dice2'));}});
-
-// RSVP
-document.getElementById('rsvpForm').addEventListener('submit',function(e){e.preventDefault();const n=document.getElementById('guestName').value.trim(),a=document.querySelector('input[name="attendance"]:checked');if(!n||!a){alert('Заполните имя и отметьте присутствие.');return;}document.getElementById('rsvpForm').style.display='none';document.getElementById('formSuccess').style.display='block';});
+// ========== RSVP ==========
+document.getElementById('rsvpForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const n=document.getElementById('guestName').value.trim();
+    const a=document.querySelector('input[name="attendance"]:checked');
+    if(!n||!a){alert('Заполните имя и отметьте присутствие.');return;}
+    document.getElementById('rsvpForm').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+});
 </script>
 </body>
 </html>
