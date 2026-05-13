@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу | Дмитрий и Кристина</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F9F6F0;
+            --text: #4A4A4A;
+            --accent: #B8A088;
+            --light-accent: #E8DDD3;
+            --white: #FFFFFF;
+            --shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
+            --border: #E5DDD5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: 0.02em;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ----- Секции ----- */
+        section {
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background-color: var(--accent);
+            margin: 35px auto;
+            opacity: 0.5;
+        }
+
+        /* ----- Типографика ----- */
+        h1, h2, h3, .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        /* ----- Hero (Шапка) ----- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .hero .invite-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 30px;
+            letter-spacing: 0.06em;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero .names {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero .and-symbol {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-weight: 300;
+        }
+
+        .hero .date-block {
+            margin-top: 40px;
+        }
+
+        .hero .day {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            color: var(--accent);
+            line-height: 1;
+            letter-spacing: 0.02em;
+        }
+
+        .hero .month-year {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text);
+            margin-top: 5px;
+            font-weight: 400;
+        }
+
+        /* ----- Таймер ----- */
+        .timer-section {
+            background-color: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .timer-grid {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .timer-item {
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .timer-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 400;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text);
+            margin-top: 5px;
+        }
+
+        .timer-note {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        /* ----- Карточки (Location, Time, Dress Code, Details) ----- */
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 45px 35px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 2;
+        }
+
+        .info-card .label {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 500;
+            border: 1px solid var(--light-accent);
+            padding: 6px 20px;
+        }
+
+        /* ----- Dress Code Colors ----- */
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .color-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        /* ----- RSVP Форма ----- */
+        .rsvp-form {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 45px 40px;
+            text-align: left;
+        }
+
+        .rsvp-form h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            background: var(--bg);
+            color: var(--text);
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .radio-group input[type="radio"] {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+        }
+
+        button[type="submit"] {
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 16px 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: block;
+            margin: 30px auto 0;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        button[type="submit"]:hover {
+            background: #9C8975;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        /* ----- Footer ----- */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        /* ----- Адаптивность ----- */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+            .hero .day {
+                font-size: 3.5rem;
+            }
+            .hero .names {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .hero .and-symbol {
+                font-size: 2rem;
+            }
+            .timer-number {
+                font-size: 2.8rem;
+            }
+            .timer-grid {
+                gap: 15px;
+            }
+            .rsvp-form {
+                padding: 30px 22px;
+            }
+            section {
+                padding: 50px 0;
+            }
+            .info-card {
+                padding: 30px 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <p class="invite-text">you are invited</p>
+        <p class="subtitle" style="margin-bottom:20px;">мы женимся</p>
+        <div class="names">
+            <h1>Дмитрий</h1>
+            <span class="and-symbol">&</span>
+            <h1>Кристина</h1>
+        </div>
+        <div class="date-block">
+            <div class="day">24</div>
+            <div class="day">07</div>
+            <div class="month-year">июль 2026</div>
+        </div>
+    </section>
+
+    <!-- Приветствие -->
+    <section>
+        <div class="container">
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--accent); margin-bottom: 20px;">Дорогие гости,</p>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 0.95rem;">
+                Приглашаем разделить с нами<br>этот важный момент!
+            </p>
+            <p style="max-width: 550px; margin: 25px auto 0; font-size: 0.85rem; color: #6B6B6B;">
+                Мы сказали друг другу «да» и теперь готовим день нашей свадьбы, который запомнится на всю жизнь!
+            </p>
+        </div>
+    </section>
+
+    <div class="container"><div class="section-divider"></div></div>
+
+    <!-- Место проведения -->
+    <section>
+        <div class="container">
+            <div class="info-card">
+                <span class="label">wedding location</span>
+                <h3>Парк-отель «Спасское»</h3>
+                <p>Загородный отель<br>г. Рыбинск, Ярославская область</p>
+                <p style="font-size:0.75rem; color: #999; margin-top:12px;">( wedding location )</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тайминг -->
+    <section>
+        <div class="container">
+            <div class="info-card">
+                <span class="label">time</span>
+                <p style="font-size:1rem;"><strong>14:00</strong> — сбор гостей, фуршет</p>
+                <p style="font-size:1rem;"><strong>15:00</strong> — начало церемонии</p>
+                <p style="font-size:1rem;"><strong>23:00</strong> — завершение вечера</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Таймер обратного отсчета -->
+    <section class="timer-section">
+        <div class="container">
+            <div class="timer-grid" id="timer">
+                <div class="timer-item">
+                    <div class="timer-number" id="days">00</div>
+                    <div class="timer-label">дней</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="hours">00</div>
+                    <div class="timer-label">часов</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="minutes">00</div>
+                    <div class="timer-label">мин</div>
+                </div>
+                <div class="timer-item">
+                    <div class="timer-number" id="seconds">00</div>
+                    <div class="timer-label">сек</div>
+                </div>
+            </div>
+            <p class="timer-note">До свадьбы осталось</p>
+        </div>
+    </section>
+
+    <!-- Дресс-код -->
+    <section>
+        <div class="container">
+            <div class="info-card">
+                <span class="label">dress code</span>
+                <p style="margin-bottom: 15px;">Для вашего удобства мы подобрали примеры образов,<br>которыми вы можете вдохновиться:</p>
+                <p>Будем рады, если вы поддержите<br>цветовую гамму нашего праздника</p>
+                <div class="color-palette">
+                    <div class="color-circle" style="background-color: #E8DDD3;"></div>
+                    <div class="color-circle" style="background-color: #D4C5B9;"></div>
+                    <div class="color-circle" style="background-color: #C2B2A5;"></div>
+                    <div class="color-circle" style="background-color: #B8A088;"></div>
+                    <div class="color-circle" style="background-color: #F5F0E8;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подарки -->
+    <section>
+        <div class="container">
+            <div class="info-card">
+                <span class="label">подарки</span>
+                <p>Ваше присутствие для нас — лучший подарок.<br>Если вы захотите порадовать нас дополнительно —<br>будем благодарны за вклад в наше будущее в конверте</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Маленькие гости -->
+    <section>
+        <div class="container">
+            <div class="info-card">
+                <span class="label">details</span>
+                <p><strong>Маленькие гости</strong></p>
+                <p style="margin-top:10px;">К сожалению, на нашем торжестве не предусмотрены условия для маленьких гостей, поэтому просим вас оставить детей в надежных руках на этот вечер</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="section-divider"></div></div>
+
+    <!-- RSVP Форма -->
+    <section>
+        <div class="container">
+            <p style="text-align:center; margin-bottom: 30px; font-size: 0.9rem;">
+                Пожалуйста, подтвердите свое присутствие, заполнив анкету ниже, это поможет нам<br>в организации нашего праздника
+            </p>
+            <div class="rsvp-form" id="rsvpFormContainer">
+                <form id="rsvpForm">
+                    <div class="form-group">
+                        <label>Имя и Фамилия</label>
+                        <input type="text" id="guestName" placeholder="Введите ваше имя" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Телефон</label>
+                        <input type="tel" id="guestPhone" placeholder="+7 (___) ___-__-__">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Планируете присутствовать на свадьбе?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="attendance" value="yes" required> Да, с удовольствием</label>
+                            <label><input type="radio" name="attendance" value="no"> К сожалению, нет</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Отметьте свои предпочтения по напиткам (можно выбрать несколько вариантов)</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="drink" value="red_wine"> Красное вино</label>
+                            <label><input type="checkbox" name="drink" value="white_wine"> Белое вино</label>
+                            <label><input type="checkbox" name="drink" value="champagne"> Шампанское</label>
+                            <label><input type="checkbox" name="drink" value="spirits"> Крепкие напитки</label>
+                            <label><input type="checkbox" name="drink" value="non_alcoholic"> Безалкогольные напитки</label>
+                        </div>
+                    </div>
+
+                    <button type="submit">Отправить</button>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <p>Спасибо! Ваш ответ принят.</p>
+                    <p style="font-size:0.8rem; margin-top:10px;">Будем ждать встречи! ✨</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>с любовью,</p>
+        <p>Дмитрий и Кристина</p>
+    </div>
+
+    <script>
+        // Таймер обратного отсчета
+        const weddingDate = new Date('2026-07-24T15:00:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Обработка RSVP формы
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('guestName').value.trim();
+            const phone = document.getElementById('guestPhone').value.trim();
+            const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
+            const drinks = Array.from(document.querySelectorAll('input[name="drink"]:checked')).map(el => el.value);
+
+            // Простейшая валидация
+            if (!name || !attendance) {
+                alert('Пожалуйста, заполните имя и отметьте, планируете ли вы присутствовать.');
+                return;
+            }
+
+            const formData = {
+                name,
+                phone,
+                attendance,
+                drinks
+            };
+
+            console.log('RSVP Data:', formData);
+
+            // Имитация отправки
+            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
