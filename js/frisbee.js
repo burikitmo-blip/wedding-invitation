@@ -7,370 +7,167 @@
     if (!scene || !frisbeeDisc || !frisbeeShadow || !heartsContainer) return;
     
     var frisbeeActive = false;
-    
-    // Создаём canvas для жениха и невесты
-    var groomCanvas = document.createElement('canvas');
-    groomCanvas.className = 'groom-canvas';
-    groomCanvas.width = 180;
-    groomCanvas.height = 220;
-    groomCanvas.style.cssText = 'position:absolute;bottom:35px;left:8%;z-index:3;';
-    scene.appendChild(groomCanvas);
-    var groomCtx = groomCanvas.getContext('2d');
-    
-    var brideCanvas = document.createElement('canvas');
-    brideCanvas.className = 'bride-canvas';
-    brideCanvas.width = 180;
-    brideCanvas.height = 220;
-    brideCanvas.style.cssText = 'position:absolute;bottom:35px;right:8%;z-index:3;transform:scaleX(-1);';
-    scene.appendChild(brideCanvas);
-    var brideCtx = brideCanvas.getContext('2d');
-    
-    // Рисование жениха
-    function drawGroom(phase, progress) {
-        var cx = 90, cy = 100;
-        groomCtx.clearRect(0, 0, 180, 220);
-        var armAngle = -0.3, legShift = 0, bodyTilt = 0;
-        
-        if (phase === 'idle') {
-            legShift = Math.sin(Date.now() * 0.004) * 4;
-        } else if (phase === 'throw') {
-            if (progress < 0.4) {
-                armAngle = -0.3 - progress * 4;
-                bodyTilt = -progress * 0.3;
-            } else {
-                armAngle = -1.9 + (progress - 0.4) * 5;
-                bodyTilt = -0.12 + (progress - 0.4) * 0.4;
-                legShift = progress * 6;
-            }
-        } else if (phase === 'catch') {
-            armAngle = -1.5;
-            legShift = -3;
-        }
-        
-        groomCtx.save();
-        groomCtx.translate(cx, cy + 30);
-        groomCtx.rotate(bodyTilt);
-        
-        // Ноги
-        groomCtx.strokeStyle = '#1A1A1A';
-        groomCtx.lineWidth = 7;
-        groomCtx.lineCap = 'round';
-        groomCtx.beginPath();
-        groomCtx.moveTo(-8, 40);
-        groomCtx.lineTo(-14 + legShift, 90);
-        groomCtx.stroke();
-        groomCtx.fillStyle = '#111';
-        groomCtx.beginPath();
-        groomCtx.roundRect(-24 + legShift, 88, 20, 10, 4);
-        groomCtx.fill();
-        groomCtx.beginPath();
-        groomCtx.moveTo(8, 40);
-        groomCtx.lineTo(14 - legShift, 90);
-        groomCtx.stroke();
-        groomCtx.beginPath();
-        groomCtx.roundRect(4 - legShift, 88, 20, 10, 4);
-        groomCtx.fill();
-        
-        // Тело
-        groomCtx.strokeStyle = '#1A1A1A';
-        groomCtx.lineWidth = 9;
-        groomCtx.beginPath();
-        groomCtx.moveTo(0, -20);
-        groomCtx.lineTo(0, 45);
-        groomCtx.stroke();
-        groomCtx.fillStyle = '#1A1A1A';
-        groomCtx.beginPath();
-        groomCtx.roundRect(-16, -5, 32, 50, 6);
-        groomCtx.fill();
-        groomCtx.fillStyle = '#FFFFFF';
-        groomCtx.beginPath();
-        groomCtx.moveTo(-5, -5);
-        groomCtx.lineTo(5, -5);
-        groomCtx.lineTo(0, 8);
-        groomCtx.fill();
-        
-        // Руки
-        groomCtx.strokeStyle = '#1A1A1A';
-        groomCtx.lineWidth = 6;
-        groomCtx.beginPath();
-        groomCtx.moveTo(-14, -2);
-        groomCtx.lineTo(-22, 22);
-        groomCtx.stroke();
-        var handX = 16 * Math.cos(armAngle);
-        var handY = -2 + 16 * Math.sin(armAngle);
-        groomCtx.beginPath();
-        groomCtx.moveTo(14, -2);
-        groomCtx.lineTo(handX + 14, handY);
-        groomCtx.stroke();
-        groomCtx.fillStyle = '#D4A574';
-        groomCtx.beginPath();
-        groomCtx.arc(handX + 14, handY, 5, 0, Math.PI * 2);
-        groomCtx.fill();
-        
-        // Голова
-        groomCtx.fillStyle = '#D4A574';
-        groomCtx.beginPath();
-        groomCtx.roundRect(-5, -35, 10, 12, 3);
-        groomCtx.fill();
-        groomCtx.beginPath();
-        groomCtx.arc(0, -30, 16, 0, Math.PI * 2);
-        groomCtx.fill();
-        
-        // Волосы
-        groomCtx.fillStyle = '#4A3728';
-        groomCtx.beginPath();
-        groomCtx.arc(0, -36, 17, Math.PI, 0);
-        groomCtx.fill();
-        groomCtx.fillRect(-17, -42, 34, 10);
-        
-        // Цилиндр
-        groomCtx.fillStyle = '#2C2C2C';
-        groomCtx.fillRect(-12, -74, 24, 18);
-        groomCtx.fillRect(-17, -58, 34, 5);
-        
-        // Глаза
-        groomCtx.fillStyle = '#000';
-        groomCtx.beginPath();
-        groomCtx.arc(-5, -30, 2, 0, Math.PI);
-        groomCtx.fill();
-        groomCtx.beginPath();
-        groomCtx.arc(5, -30, 2, 0, Math.PI);
-        groomCtx.fill();
-        
-        // Бабочка
-        groomCtx.fillStyle = '#7A3B48';
-        groomCtx.beginPath();
-        groomCtx.moveTo(0, -28);
-        groomCtx.lineTo(-10, -34);
-        groomCtx.lineTo(-10, -25);
-        groomCtx.fill();
-        groomCtx.beginPath();
-        groomCtx.moveTo(0, -28);
-        groomCtx.lineTo(10, -34);
-        groomCtx.lineTo(10, -25);
-        groomCtx.fill();
-        
-        groomCtx.restore();
-    }
-    
-    // Рисование невесты
-    function drawBride(phase, progress) {
-        var cx = 90, cy = 100;
-        brideCtx.clearRect(0, 0, 180, 220);
-        var armAngle = -0.3, legShift = 0, bodyTilt = 0;
-        
-        if (phase === 'idle') {
-            legShift = Math.sin(Date.now() * 0.005 + 1) * 3;
-        } else if (phase === 'catch') {
-            armAngle = -1.5;
-            legShift = -5;
-        }
-        
-        brideCtx.save();
-        brideCtx.translate(cx, cy + 25);
-        brideCtx.rotate(bodyTilt);
-        
-        // Ноги
-        brideCtx.strokeStyle = '#D4A574';
-        brideCtx.lineWidth = 5;
-        brideCtx.lineCap = 'round';
-        brideCtx.beginPath();
-        brideCtx.moveTo(-6, 35);
-        brideCtx.lineTo(-10 + legShift, 75);
-        brideCtx.stroke();
-        brideCtx.beginPath();
-        brideCtx.moveTo(6, 35);
-        brideCtx.lineTo(10 - legShift, 75);
-        brideCtx.stroke();
-        
-        // Платье
-        brideCtx.fillStyle = '#FAF0E6';
-        brideCtx.beginPath();
-        brideCtx.moveTo(0, 18);
-        brideCtx.lineTo(-30, 80);
-        brideCtx.quadraticCurveTo(0, 85, 30, 80);
-        brideCtx.closePath();
-        brideCtx.fill();
-        
-        brideCtx.fillStyle = '#FAF0E6';
-        brideCtx.beginPath();
-        brideCtx.roundRect(-12, -8, 24, 28, 8);
-        brideCtx.fill();
-        
-        // Руки
-        brideCtx.strokeStyle = '#D4A574';
-        brideCtx.lineWidth = 5;
-        brideCtx.beginPath();
-        brideCtx.moveTo(-10, -5);
-        brideCtx.lineTo(-20, 15);
-        brideCtx.stroke();
-        brideCtx.fillStyle = '#7B8D5A';
-        brideCtx.beginPath();
-        brideCtx.arc(-22, 18, 8, 0, Math.PI * 2);
-        brideCtx.fill();
-        brideCtx.fillStyle = '#A3B18A';
-        brideCtx.beginPath();
-        brideCtx.arc(-19, 14, 4, 0, Math.PI * 2);
-        brideCtx.fill();
-        brideCtx.fillStyle = '#E8DDD3';
-        brideCtx.beginPath();
-        brideCtx.arc(-26, 16, 4, 0, Math.PI * 2);
-        brideCtx.fill();
-        
-        var handX = 16 * Math.cos(armAngle);
-        var handY = -5 + 16 * Math.sin(armAngle);
-        brideCtx.beginPath();
-        brideCtx.moveTo(10, -5);
-        brideCtx.lineTo(handX + 10, handY);
-        brideCtx.stroke();
-        brideCtx.fillStyle = '#D4A574';
-        brideCtx.beginPath();
-        brideCtx.arc(handX + 10, handY, 5, 0, Math.PI * 2);
-        brideCtx.fill();
-        
-        // Голова
-        brideCtx.fillStyle = '#D4A574';
-        brideCtx.beginPath();
-        brideCtx.arc(0, -22, 15, 0, Math.PI * 2);
-        brideCtx.fill();
-        
-        // Волосы
-        brideCtx.fillStyle = '#6B3A2A';
-        brideCtx.beginPath();
-        brideCtx.arc(0, -28, 16, Math.PI, 0);
-        brideCtx.fill();
-        brideCtx.fillRect(-16, -30, 8, 30);
-        brideCtx.fillRect(8, -30, 8, 30);
-        
-        // Фата
-        brideCtx.fillStyle = 'rgba(255,255,255,0.45)';
-        brideCtx.beginPath();
-        brideCtx.arc(0, -35, 20, Math.PI, 0);
-        brideCtx.fill();
-        brideCtx.fillRect(-20, -36, 40, 10);
-        
-        // Глаза
-        brideCtx.fillStyle = '#000';
-        brideCtx.beginPath();
-        brideCtx.arc(-4, -22, 2, 0, Math.PI);
-        brideCtx.fill();
-        brideCtx.beginPath();
-        brideCtx.arc(4, -22, 2, 0, Math.PI);
-        brideCtx.fill();
-        
-        brideCtx.restore();
-    }
-    
-    // Idle анимация
-    function idleLoop() {
-        if (!frisbeeActive) {
-            drawGroom('idle', 0);
-            drawBride('idle', 0);
-        }
-        requestAnimationFrame(function() {
-            if (!frisbeeActive) idleLoop();
-        });
-    }
-    idleLoop();
-    
+
+    // Жених — тёмный силуэт
+    var groomSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    groomSvg.setAttribute("viewBox", "0 0 160 240");
+    groomSvg.setAttribute("width", "140");
+    groomSvg.setAttribute("height", "210");
+    groomSvg.style.cssText = 'position:absolute;bottom:30px;left:7%;z-index:3;';
+    groomSvg.innerHTML = `
+        <!-- Ноги -->
+        <rect x="62" y="160" width="14" height="50" rx="5" fill="#1A1A1A"/>
+        <rect x="84" y="160" width="14" height="50" rx="5" fill="#1A1A1A"/>
+        <rect x="58" y="200" width="22" height="12" rx="4" fill="#111"/>
+        <rect x="80" y="200" width="22" height="12" rx="4" fill="#111"/>
+        <!-- Пиджак -->
+        <rect x="55" y="80" width="50" height="85" rx="10" fill="#1A1A1A"/>
+        <!-- Рубашка -->
+        <polygon points="80,80 65,105 95,105" fill="#FFFFFF"/>
+        <!-- Руки -->
+        <rect x="38" y="85" width="18" height="55" rx="7" fill="#1A1A1A"/>
+        <rect x="104" y="85" width="18" height="55" rx="7" fill="#1A1A1A" id="groomArm"/>
+        <!-- Голова -->
+        <ellipse cx="80" cy="50" rx="24" ry="28" fill="#D4A574"/>
+        <!-- Волосы -->
+        <ellipse cx="80" cy="32" rx="26" ry="18" fill="#3A2A1A"/>
+        <rect x="54" y="28" width="14" height="22" rx="5" fill="#3A2A1A"/>
+        <rect x="92" y="28" width="14" height="22" rx="5" fill="#3A2A1A"/>
+        <!-- Цилиндр -->
+        <rect x="58" y="-15" width="44" height="30" rx="3" fill="#1A1A1A"/>
+        <rect x="52" y="12" width="56" height="6" rx="2" fill="#1A1A1A"/>
+        <!-- Бабочка -->
+        <polygon points="80,70 66,60 66,78" fill="#7A3B48"/>
+        <polygon points="80,70 94,60 94,78" fill="#7A3B48"/>
+    `;
+    scene.appendChild(groomSvg);
+
+    // Невеста — светлый силуэт
+    var brideSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    brideSvg.setAttribute("viewBox", "0 0 160 240");
+    brideSvg.setAttribute("width", "140");
+    brideSvg.setAttribute("height", "210");
+    brideSvg.style.cssText = 'position:absolute;bottom:30px;right:7%;z-index:3;transform:scaleX(-1);';
+    brideSvg.innerHTML = `
+        <!-- Платье -->
+        <path d="M80,105 L40,200 Q80,215 120,200 Z" fill="#FAF0E6"/>
+        <path d="M80,105 L35,200 Q80,220 125,200 Z" fill="rgba(250,240,230,0.3)"/>
+        <!-- Верх платья -->
+        <rect x="62" y="70" width="36" height="40" rx="12" fill="#FAF0E6"/>
+        <!-- Руки -->
+        <rect x="42" y="78" width="14" height="45" rx="6" fill="#D4A574"/>
+        <rect x="104" y="78" width="14" height="45" rx="6" fill="#D4A574"/>
+        <!-- Букет -->
+        <circle cx="35" cy="95" r="12" fill="#7B8D5A"/>
+        <circle cx="28" cy="88" r="7" fill="#A3B18A"/>
+        <circle cx="40" cy="90" r="6" fill="#E8DDD3"/>
+        <!-- Голова -->
+        <ellipse cx="80" cy="42" rx="22" ry="26" fill="#D4A574"/>
+        <!-- Волосы -->
+        <ellipse cx="80" cy="25" rx="24" ry="16" fill="#5A3020"/>
+        <rect x="56" y="20" width="12" height="35" rx="5" fill="#5A3020"/>
+        <rect x="92" y="20" width="12" height="35" rx="5" fill="#5A3020"/>
+        <!-- Фата -->
+        <ellipse cx="80" cy="5" rx="30" ry="14" fill="rgba(255,255,255,0.4)"/>
+        <rect x="50" y="3" width="60" height="8" rx="3" fill="rgba(255,255,255,0.35)"/>
+    `;
+    scene.appendChild(brideSvg);
+
     // Сердечки
     function spawnHearts(x, y) {
         var emojis = ['💕','💖','💗','✨','♥️','💝','💘'];
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 12; i++) {
             (function(idx) {
                 setTimeout(function() {
                     var heart = document.createElement('div');
                     heart.className = 'heart-particle';
                     heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                    heart.style.left = (x - 10 + Math.random() * 20) + 'px';
-                    heart.style.top = (y - 10 + Math.random() * 20) + 'px';
+                    heart.style.left = (x - 15 + Math.random() * 30) + 'px';
+                    heart.style.top = (y - 15 + Math.random() * 30) + 'px';
                     var angle = Math.random() * Math.PI * 2;
-                    var dist = 50 + Math.random() * 80;
+                    var dist = 60 + Math.random() * 90;
                     heart.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
-                    heart.style.setProperty('--dy', Math.sin(angle) * dist - 30 + 'px');
+                    heart.style.setProperty('--dy', Math.sin(angle) * dist - 40 + 'px');
                     heart.style.setProperty('--dx2', Math.cos(angle) * dist * 0.3 + 'px');
-                    heart.style.setProperty('--dy2', Math.sin(angle) * dist * 0.3 - 80 + 'px');
+                    heart.style.setProperty('--dy2', Math.sin(angle) * dist * 0.3 - 100 + 'px');
                     heart.classList.add('active');
                     heartsContainer.appendChild(heart);
-                    setTimeout(function() { heart.remove(); }, 1500);
-                }, idx * 30);
+                    setTimeout(function() { heart.remove(); }, 1600);
+                }, idx * 35);
             })(i);
         }
     }
-    
-    // Главная анимация
+
+    // Анимация
     function animateFrisbee() {
         if (frisbeeActive) return;
         frisbeeActive = true;
         
         var rect = scene.getBoundingClientRect();
-        var startX = rect.width * 0.18;
+        var startX = rect.width * 0.16;
         var startY = rect.height * 0.36;
-        var endX = rect.width * 0.68;
+        var endX = rect.width * 0.70;
         var endY = rect.height * 0.33;
-        
-        // Жених бросает
-        var throwStart = null;
-        function animThrow(ts) {
-            if (!throwStart) throwStart = ts;
-            var progress = Math.min((ts - throwStart) / 500, 1);
-            drawGroom('throw', progress);
-            if (progress < 1) requestAnimationFrame(animThrow);
-        }
-        requestAnimationFrame(animThrow);
-        
+
+        // Бросок
+        groomSvg.style.transition = 'transform 0.3s ease-out';
+        groomSvg.style.transform = 'rotate(-5deg) translateY(-4px)';
+        setTimeout(function() { groomSvg.style.transform = ''; }, 400);
+
         // Тарелка летит
         setTimeout(function() {
             frisbeeDisc.style.opacity = '1';
             frisbeeDisc.style.left = startX + 'px';
             frisbeeDisc.style.top = startY + 'px';
-            frisbeeDisc.style.transition = 'all 1s ease-out';
-            setTimeout(function() {
-                frisbeeDisc.style.left = endX + 'px';
-                frisbeeDisc.style.top = (endY - 20) + 'px';
-                frisbeeDisc.style.transform = 'rotate(720deg)';
-            }, 50);
+            frisbeeDisc.style.transition = 'all 1.1s cubic-bezier(0.22, 0.05, 0.25, 1)';
+            frisbeeDisc.style.left = endX + 'px';
+            frisbeeDisc.style.top = (endY - 30) + 'px';
+            frisbeeDisc.style.transform = 'rotate(720deg)';
             
             frisbeeShadow.style.opacity = '1';
             frisbeeShadow.style.left = startX + 'px';
-            frisbeeShadow.style.top = (startY + 85) + 'px';
-            frisbeeShadow.style.transition = 'all 1s ease-out';
+            frisbeeShadow.style.top = (startY + 80) + 'px';
+            frisbeeShadow.style.width = '40px';
+            frisbeeShadow.style.filter = 'blur(3px)';
+            frisbeeShadow.style.transition = 'all 1.1s cubic-bezier(0.22, 0.05, 0.25, 1)';
             setTimeout(function() {
                 frisbeeShadow.style.left = endX + 'px';
-                frisbeeShadow.style.top = (endY + 35) + 'px';
-                frisbeeShadow.style.width = '65px';
-                frisbeeShadow.style.filter = 'blur(9px)';
-            }, 50);
-        }, 300);
-        
+                frisbeeShadow.style.top = (endY + 30) + 'px';
+                frisbeeShadow.style.width = '70px';
+                frisbeeShadow.style.filter = 'blur(10px)';
+            }, 100);
+        }, 250);
+
         // Невеста ловит
         setTimeout(function() {
-            drawBride('catch', 1);
+            brideSvg.style.transition = 'transform 0.3s ease-out';
+            brideSvg.style.transform = 'scaleX(-1) translateY(-6px)';
             spawnHearts(endX, endY);
-            setTimeout(function() { drawBride('idle', 0); }, 600);
-        }, 1200);
-        
+            setTimeout(function() { brideSvg.style.transform = 'scaleX(-1)'; }, 400);
+        }, 1250);
+
         // Возврат
         setTimeout(function() {
-            frisbeeDisc.style.transition = 'all 1s ease-out';
+            frisbeeDisc.style.transition = 'all 1.1s cubic-bezier(0.22, 0.05, 0.25, 1)';
             frisbeeDisc.style.left = startX + 'px';
-            frisbeeDisc.style.top = (startY - 15) + 'px';
+            frisbeeDisc.style.top = (startY - 25) + 'px';
             frisbeeDisc.style.transform = 'rotate(1440deg)';
             
-            frisbeeShadow.style.transition = 'all 1s ease-out';
+            frisbeeShadow.style.transition = 'all 1.1s cubic-bezier(0.22, 0.05, 0.25, 1)';
             frisbeeShadow.style.left = startX + 'px';
-            frisbeeShadow.style.top = (startY + 85) + 'px';
-            frisbeeShadow.style.width = '45px';
-            frisbeeShadow.style.filter = 'blur(4px)';
-        }, 2400);
-        
+            frisbeeShadow.style.top = (startY + 80) + 'px';
+            frisbeeShadow.style.width = '40px';
+            frisbeeShadow.style.filter = 'blur(3px)';
+        }, 2500);
+
         // Жених ловит
         setTimeout(function() {
-            drawGroom('catch', 1);
+            groomSvg.style.transition = 'transform 0.3s ease-out';
+            groomSvg.style.transform = 'rotate(-3deg) translateY(-3px)';
             spawnHearts(startX, startY);
-            setTimeout(function() { drawGroom('idle', 0); }, 600);
-        }, 3400);
-        
+            setTimeout(function() { groomSvg.style.transform = ''; }, 400);
+        }, 3600);
+
         // Сброс
         setTimeout(function() {
             frisbeeDisc.style.opacity = '0';
@@ -378,21 +175,20 @@
             frisbeeDisc.style.transition = 'none';
             frisbeeShadow.style.transition = 'none';
             frisbeeActive = false;
-            idleLoop();
-        }, 4000);
+        }, 4300);
     }
-    
+
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) animateFrisbee();
         });
     }, { threshold: 0.5 });
     observer.observe(scene);
-    
+
     setInterval(function() {
         var rect = scene.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0 && !frisbeeActive && Math.random() < 0.05) {
+        if (rect.top < window.innerHeight && rect.bottom > 0 && !frisbeeActive && Math.random() < 0.04) {
             animateFrisbee();
         }
-    }, 5000);
+    }, 6000);
 })();
