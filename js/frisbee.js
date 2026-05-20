@@ -42,7 +42,6 @@ function drawGroom(ctx, phase, progress) {
     const cx = 90, cy = 100;
     ctx.clearRect(0, 0, 180, 220);
     
-    // Параметры анимации
     let armAngle = -0.3;
     let legShift = 0;
     let bodyTilt = 0;
@@ -52,12 +51,11 @@ function drawGroom(ctx, phase, progress) {
         legShift = Math.sin(Date.now() * 0.004) * 4;
         armAngle = -0.3 + Math.sin(Date.now() * 0.003) * 0.2;
     } else if (phase === 'throw') {
-        // Замах: рука идёт назад, потом вперёд
         if (progress < 0.4) {
-            armAngle = -0.3 - progress * 4; // Назад
+            armAngle = -0.3 - progress * 4;
             bodyTilt = -progress * 0.3;
         } else {
-            armAngle = -1.9 + (progress - 0.4) * 5; // Бросок вперёд
+            armAngle = -1.9 + (progress - 0.4) * 5;
             bodyTilt = -0.12 + (progress - 0.4) * 0.4;
             legShift = progress * 6;
         }
@@ -78,18 +76,15 @@ function drawGroom(ctx, phase, progress) {
     ctx.lineWidth = 7;
     ctx.lineCap = 'round';
     
-    // Левая нога
     ctx.beginPath();
     ctx.moveTo(-8, 40);
     ctx.lineTo(-14 + legShift, 90);
     ctx.stroke();
-    // Ботинок
     ctx.fillStyle = '#111';
     ctx.beginPath();
     ctx.roundRect(-24 + legShift, 88, 20, 10, 4);
     ctx.fill();
     
-    // Правая нога
     ctx.beginPath();
     ctx.moveTo(8, 40);
     ctx.lineTo(14 - legShift, 90);
@@ -106,7 +101,6 @@ function drawGroom(ctx, phase, progress) {
     ctx.lineTo(0, 45);
     ctx.stroke();
     
-    // Пиджак
     ctx.fillStyle = '#1A1A1A';
     ctx.beginPath();
     ctx.roundRect(-16, -5, 32, 50, 6);
@@ -120,7 +114,7 @@ function drawGroom(ctx, phase, progress) {
     ctx.lineTo(0, 8);
     ctx.fill();
     
-    // Левая рука (опорная)
+    // Левая рука
     ctx.strokeStyle = '#1A1A1A';
     ctx.lineWidth = 6;
     ctx.beginPath();
@@ -128,20 +122,19 @@ function drawGroom(ctx, phase, progress) {
     ctx.lineTo(-22, 22);
     ctx.stroke();
     
-    // Правая рука (двигающаяся)
+    // Правая рука
     const handX = 16 * Math.cos(armAngle);
     const handY = -2 + 16 * Math.sin(armAngle);
     ctx.beginPath();
     ctx.moveTo(14, -2);
     ctx.lineTo(handX + 14, handY);
     ctx.stroke();
-    // Кисть
     ctx.fillStyle = '#D4A574';
     ctx.beginPath();
     ctx.arc(handX + 14, handY, 5, 0, Math.PI * 2);
     ctx.fill();
     
-    // Шея + голова
+    // Голова
     ctx.fillStyle = '#D4A574';
     ctx.beginPath();
     ctx.roundRect(-5, -35, 10, 12, 3);
@@ -265,12 +258,11 @@ function drawBride(ctx, phase, progress) {
     ctx.lineTo(0, 20);
     ctx.stroke();
     
-    // Левая рука
+    // Левая рука + букет
     ctx.beginPath();
     ctx.moveTo(-10, -5);
     ctx.lineTo(-20, 15);
     ctx.stroke();
-    // Букет
     ctx.fillStyle = '#7B8D5A';
     ctx.beginPath();
     ctx.arc(-22, 18, 8, 0, Math.PI * 2);
@@ -340,10 +332,10 @@ function drawBride(ctx, phase, progress) {
 function spawnHearts(x, y) {
     const count = 12;
     for (let i = 0; i < count; i++) {
-        setTimeout(() => {
+        setTimeout(function() {
             const heart = document.createElement('div');
             heart.className = 'heart-particle';
-            heart.textContent = ['💕', '💖', '💗', '✨', '♥️', '💝', '💘'][Math.floor(Math.random() * 7)];
+            heart.textContent = ['💕','💖','💗','✨','♥️','💝','💘'][Math.floor(Math.random() * 7)];
             heart.style.left = (x - 10 + Math.random() * 20) + 'px';
             heart.style.top = (y - 10 + Math.random() * 20) + 'px';
             const angle = Math.random() * Math.PI * 2;
@@ -354,7 +346,7 @@ function spawnHearts(x, y) {
             heart.style.setProperty('--dy2', Math.sin(angle) * dist * 0.3 - 80 + 'px');
             heart.classList.add('active');
             heartsContainer.appendChild(heart);
-            setTimeout(() => heart.remove(), 1600);
+            setTimeout(function() { heart.remove(); }, 1600);
         }, i * 40);
     }
 }
@@ -365,13 +357,12 @@ const groomCtx = groomCanvas.getContext('2d');
 const brideCanvas = createBrideCanvas();
 const brideCtx = brideCanvas.getContext('2d');
 
-// Idle-анимация
 function idleLoop() {
     if (!frisbeeActive) {
         drawGroom(groomCtx, 'idle', 0);
         drawBride(brideCtx, 'idle', 0);
     }
-    requestAnimationFrame(() => {
+    requestAnimationFrame(function() {
         if (!frisbeeActive) idleLoop();
     });
 }
@@ -388,7 +379,6 @@ function animateFrisbee() {
     const endX = sceneRect.width * 0.68;
     const endY = sceneRect.height * 0.33;
     
-    // Жених бросает
     let throwStart = null;
     function animateThrow(timestamp) {
         if (!throwStart) throwStart = timestamp;
@@ -400,8 +390,7 @@ function animateFrisbee() {
     }
     requestAnimationFrame(animateThrow);
     
-    // Тарелка летит к невесте
-    setTimeout(() => {
+    setTimeout(function() {
         frisbeeDisc.style.opacity = '1';
         frisbeeDisc.style.left = startX + 'px';
         frisbeeDisc.style.top = startY + 'px';
@@ -410,7 +399,6 @@ function animateFrisbee() {
         frisbeeDisc.style.top = (endY - 20) + 'px';
         frisbeeDisc.style.transform = 'rotate(720deg)';
         
-        // Тень
         frisbeeShadow.style.opacity = '1';
         frisbeeShadow.style.left = startX + 'px';
         frisbeeShadow.style.top = (startY + 88) + 'px';
@@ -418,8 +406,7 @@ function animateFrisbee() {
         frisbeeShadow.style.filter = 'blur(4px)';
         frisbeeShadow.style.transition = 'all 1.1s cubic-bezier(0.22, 0.05, 0.25, 1)';
         
-        // Тень увеличивается при снижении
-        setTimeout(() => {
+        setTimeout(function() {
             frisbeeShadow.style.width = '65px';
             frisbeeShadow.style.filter = 'blur(9px)';
             frisbeeShadow.style.left = endX + 'px';
@@ -427,8 +414,7 @@ function animateFrisbee() {
         }, 100);
     }, 250);
     
-    // Невеста ловит
-    setTimeout(() => {
+    setTimeout(function() {
         let catchStart = null;
         function animateCatch(timestamp) {
             if (!catchStart) catchStart = timestamp;
@@ -442,8 +428,7 @@ function animateFrisbee() {
         spawnHearts(endX, endY);
     }, 1200);
     
-    // Возврат тарелки
-    setTimeout(() => {
+    setTimeout(function() {
         frisbeeDisc.style.transition = 'all 1.1s cubic-bezier(0.22, 0.05, 0.25, 1)';
         frisbeeDisc.style.left = startX + 'px';
         frisbeeDisc.style.top = (startY - 15) + 'px';
@@ -455,14 +440,13 @@ function animateFrisbee() {
         frisbeeShadow.style.width = '45px';
         frisbeeShadow.style.filter = 'blur(4px)';
         
-        setTimeout(() => {
+        setTimeout(function() {
             frisbeeShadow.style.width = '60px';
             frisbeeShadow.style.filter = 'blur(8px)';
         }, 100);
     }, 2500);
     
-    // Жених ловит
-    setTimeout(() => {
+    setTimeout(function() {
         let catchStart2 = null;
         function animateCatch2(timestamp) {
             if (!catchStart2) catchStart2 = timestamp;
@@ -476,8 +460,7 @@ function animateFrisbee() {
         spawnHearts(startX, startY);
     }, 3500);
     
-    // Сброс
-    setTimeout(() => {
+    setTimeout(function() {
         frisbeeDisc.style.opacity = '0';
         frisbeeShadow.style.opacity = '0';
         frisbeeDisc.style.transition = 'none';
@@ -488,15 +471,15 @@ function animateFrisbee() {
 }
 
 // ========== НАБЛЮДАТЕЛЬ ==========
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
         if (entry.isIntersecting) animateFrisbee();
     });
 }, { threshold: 0.5 });
 observer.observe(scene);
 
 // Повтор
-setInterval(() => {
+setInterval(function() {
     const rect = scene.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0 && !frisbeeActive && Math.random() < 0.05) {
         animateFrisbee();
