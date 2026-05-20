@@ -29,7 +29,6 @@ body {
 
 .container { max-width: 800px; margin: 0 auto; padding: 0 32px; }
 
-/* Бегущая строка */
 .marquee {
     position: fixed; top: 0; left: 0; width: 100%;
     background: var(--olive); color: white;
@@ -41,14 +40,12 @@ body {
 .marquee span { padding: 0 30px; }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* Анимации */
 .fade-up {
     opacity: 0; transform: translateY(40px);
     transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-/* Hero */
 .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     justify-content: center; align-items: center;
@@ -64,14 +61,12 @@ body {
 .hero .day { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 400; color: var(--olive); line-height: 1; }
 .hero .month-year { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--brown); margin-top: 8px; }
 
-/* Фото */
 .photo-pair { display: flex; gap: 20px; max-width: 600px; margin: 30px auto 0; overflow: hidden; }
 .photo-pair img { width: 50%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s; opacity: 0; }
 .photo-pair img:first-child { transform: translateX(-120px); }
 .photo-pair img:last-child { transform: translateX(120px); }
 .photo-pair.visible img { opacity: 1; transform: translateX(0); }
 
-/* Фрисби */
 .frisbee-section {
     position: relative; padding: 80px 0; overflow: hidden;
     min-height: 500px;
@@ -109,24 +104,6 @@ body {
     border-radius: 50% 50% 0 0 / 20px 20px 0 0;
 }
 
-/* Силуэты */
-.silhouette { position: absolute; bottom: 40px; z-index: 3; transition: transform 0.3s; }
-.groom-silhouette { left: 10%; }
-.bride-silhouette { right: 10%; transform: scaleX(-1); }
-.groom-silhouette.throwing { animation: groomWindUp 0.5s ease-out; }
-@keyframes groomWindUp {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(-8deg) translateY(-5px); }
-    100% { transform: rotate(0deg) translateY(0); }
-}
-.bride-silhouette.catching { animation: brideReach 0.5s ease-out; }
-@keyframes brideReach {
-    0% { transform: scaleX(-1) translateY(0); }
-    50% { transform: scaleX(-1) translateY(-8px); }
-    100% { transform: scaleX(-1) translateY(0); }
-}
-
-/* Тарелка */
 .frisbee-disc {
     position: absolute;
     width: 44px; height: 44px;
@@ -154,7 +131,6 @@ body {
     filter: blur(5px);
 }
 
-/* Сердечки */
 .hearts-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
 .heart-particle { position: absolute; font-size: 1.3rem; opacity: 0; }
 .heart-particle.active { animation: heartsPop 1.5s ease-out forwards; }
@@ -164,7 +140,6 @@ body {
     100% { opacity: 0; transform: translate(var(--dx2), var(--dy2)) scale(0.6); }
 }
 
-/* Календарь */
 .calendar-wrapper { background: var(--white); border: 1px solid var(--border); max-width: 450px; margin: 30px auto 0; padding: 30px 25px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); }
 .calendar-month { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--wine); margin-bottom: 15px; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; font-size: 0.85rem; }
@@ -174,12 +149,10 @@ body {
 .calendar-grid .day.wedding-day { background: var(--wine); color: white; font-weight: 600; animation: heartbeat 1.5s ease-in-out infinite; }
 @keyframes heartbeat { 0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.1)}60%{transform:scale(1)} }
 
-/* Текст */
 .serif-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--wine); margin-bottom: 20px; }
 .serif-sub { font-size: 0.85rem; color: #6B6B6B; }
 .dice-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--brown); margin-bottom: 15px; }
 
-/* Таймер */
 .timer-section { background: linear-gradient(135deg, var(--olive), var(--olive-light)); padding: 60px 0; color: white; }
 .timer-grid { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: nowrap; }
 .timer-item { text-align: center; min-width: 70px; background: rgba(255,255,255,0.15); border-radius: 12px; padding: 15px 12px; backdrop-filter: blur(10px); }
@@ -188,7 +161,6 @@ body {
 .timer-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; margin-top: 4px; opacity: 0.9; }
 .timer-note { margin-top: 25px; font-size: 0.9rem; font-style: italic; font-family: 'Cormorant Garamond', serif; opacity: 0.9; }
 
-/* Карточки */
 section { padding: 80px 0; text-align: center; }
 .elegant-card { background: var(--white); border: 1px solid var(--border); padding: 60px 50px; margin-bottom: 24px; text-align: center; position: relative; box-shadow: 0 4px 30px rgba(0,0,0,0.03); transition: all 0.4s; border-radius: 2px; }
 .elegant-card:hover { box-shadow: 0 12px 45px rgba(0,0,0,0.06); transform: translateY(-2px); }
@@ -222,17 +194,14 @@ section { padding: 80px 0; text-align: center; }
 .card-details h3 { color: var(--olive); }
 .card-details .label { color: var(--olive); border: 1px solid var(--olive-light); background: rgba(123,141,90,0.05); }
 
-/* Кнопка */
 .btn-outline { display: inline-block; padding: 14px 40px; border: 1px solid var(--wine); color: var(--wine); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; cursor: pointer; background: transparent; font-family: 'Montserrat', sans-serif; transition: all 0.4s; margin-top: 20px; }
 .btn-outline:hover { background: var(--wine); color: white; }
 
-/* Кубики */
 .dice-playground { position: relative; max-width: 600px; height: 250px; margin: 0 auto; background: var(--white); border: 2px dashed var(--beige-dark); border-radius: 16px; overflow: hidden; }
 .dice { position: absolute; width: 60px; height: 60px; background: var(--white); border: 2px solid var(--brown); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: left 0.8s cubic-bezier(0.25,0.8,0.25,1.2), top 0.8s cubic-bezier(0.25,0.8,0.25,1.2), transform 0.6s cubic-bezier(0.22,1,0.36,1); user-select: none; z-index: 2; }
 .dice.rolling { animation: diceBounce 0.8s cubic-bezier(0.22,1,0.36,1); }
 @keyframes diceBounce { 0%{transform:scale(1) rotate(0deg)}30%{transform:scale(1.3) rotate(180deg)}60%{transform:scale(0.8) rotate(360deg)}100%{transform:scale(1) rotate(540deg)} }
 
-/* Модальное окно */
 .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); z-index:2000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity 0.4s; backdrop-filter:blur(4px); }
 .modal-overlay.active { opacity:1; pointer-events:all; }
 .modal { background: var(--white); padding:40px 30px; max-width:600px; width:90%; max-height:80vh; overflow-y:auto; text-align:center; position:relative; border-radius:4px; }
@@ -241,12 +210,10 @@ section { padding: 80px 0; text-align: center; }
 .dress-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:25px; }
 .dress-grid img { width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:4px; }
 
-/* Цвета */
 .color-palette { display:flex; justify-content:center; gap:20px; margin-top:22px; flex-wrap:wrap; }
 .color-circle { width:50px; height:50px; border-radius:50%; border:2px solid var(--border); transition:transform 0.3s; }
 .color-circle:hover { transform:scale(1.15); }
 
-/* RSVP */
 .rsvp-form { background:var(--white); border:1px solid var(--border); padding:55px 45px; text-align:left; box-shadow:0 4px 30px rgba(0,0,0,0.03); border-left:3px solid var(--olive); }
 .rsvp-intro { text-align: center; margin-bottom: 35px; }
 .form-group { margin-bottom:28px; }
@@ -261,14 +228,12 @@ button[type="submit"]:hover { background:var(--olive-light); }
 .form-success { display:none; text-align:center; padding:40px; color:var(--olive); font-style:italic; }
 .form-success-sub { font-size: 0.85rem; margin-top: 12px; }
 
-/* Footer */
 .footer { text-align:center; padding:80px 20px; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; color:var(--wine); }
 .footer::before { content:''; display:block; width:60px; height:2px; background:var(--wine); margin:0 auto 30px; opacity:0.4; }
 .photo-single { max-width:450px; margin:30px auto 0; }
 .photo-single img { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.08); }
 .section-divider { width:80px; height:2px; background:linear-gradient(90deg,transparent,var(--brown),transparent); margin:0 auto; }
 
-/* Mobile */
 @media (max-width:600px) {
     .hero h1 { font-size:2.8rem; } .hero .day { font-size:3.5rem; } .hero .names { flex-direction:column; gap:5px; } .hero .and-symbol { font-size:2rem; }
     .timer-number { font-size:2rem; } .timer-grid { gap:4px; } .timer-item { min-width:55px; padding:12px 8px; } .timer-separator { font-size:1.8rem; padding:0 1px; }

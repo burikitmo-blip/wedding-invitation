@@ -1,11 +1,24 @@
-function openModal(){
-    document.getElementById('dressModal').classList.add('active');
-    document.body.style.overflow='hidden';
+function openModal() {
+    var modal = document.getElementById('dressModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
-function closeModal(){
-    document.getElementById('dressModal').classList.remove('active');
-    document.body.style.overflow='';
+
+function closeModal() {
+    var modal = document.getElementById('dressModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
-document.getElementById('dressModal').addEventListener('click',function(e){
-    if(e.target===this)closeModal();
+
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('dressModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+    }
 });
