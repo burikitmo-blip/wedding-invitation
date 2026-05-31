@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Eskal';
+    src: url('../fonts/Eskal-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url('../fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
 :root {
     --bg: #FAF7F2;
     --text: #3D3D3D;
@@ -18,8 +30,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    font-family: 'Montserrat-Medium', sans-serif;
+    font-weight: 500;
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
@@ -47,25 +59,38 @@ body {
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
 .hero {
-    min-height: 100vh; display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    text-align: center; padding: 100px 20px 40px;
-    background: linear-gradient(180deg, rgba(123,141,90,0.04) 0%, transparent 50%);
+    margin-top: 42px;
+    padding: 0;
 }
-.hero .invite-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--wine); margin-bottom: 30px; }
-.hero .subtitle { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--brown); margin-bottom: 12px; font-weight: 400; }
-.hero .names { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
-.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 400; color: var(--text); letter-spacing: 0.05em; }
-.hero .and-symbol { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--wine); font-style: italic; }
-.hero .date-block { margin-top: 50px; }
-.hero .day { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 400; color: var(--olive); line-height: 1; }
-.hero .month-year { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--brown); margin-top: 8px; }
-
-.photo-pair { display: flex; gap: 20px; max-width: 600px; margin: 30px auto 0; overflow: hidden; }
-.photo-pair img { width: 50%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s; opacity: 0; }
-.photo-pair img:first-child { transform: translateX(-120px); }
-.photo-pair img:last-child { transform: translateX(120px); }
-.photo-pair.visible img { opacity: 1; transform: translateX(0); }
+.photo-pair {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+.photo-pair img {
+    width: 50%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s;
+    opacity: 0;
+}
+.photo-pair img:first-child {
+    transform: translateX(-100%);
+}
+.photo-pair img:last-child {
+    transform: translateX(100%);
+}
+.photo-pair.visible img {
+    opacity: 1;
+    transform: translateX(0);
+}
 
 .frisbee-section {
     position: relative; padding: 80px 0; overflow: hidden;
@@ -140,17 +165,90 @@ body {
     100% { opacity: 0; transform: translate(var(--dx2), var(--dy2)) scale(0.6); }
 }
 
-.calendar-wrapper { background: var(--white); border: 1px solid var(--border); max-width: 450px; margin: 30px auto 0; padding: 30px 25px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); }
-.calendar-month { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--wine); margin-bottom: 15px; }
+.calendar-wrapper { max-width: 450px; margin: 30px auto 0; padding: 30px 25px; background: transparent; border: none; box-shadow: none; }
+.calendar-month { font-family: 'Eskal', 'Cormorant Garamond', serif; font-size: 1.8rem; color: #7B8D5A; margin-bottom: 20px; letter-spacing: 0.05em; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; font-size: 0.85rem; }
 .calendar-grid .day-header { font-size: 0.65rem; text-transform: uppercase; color: var(--brown); font-weight: 500; letter-spacing: 0.1em; padding-bottom: 8px; }
-.calendar-grid .day { padding: 10px 4px; border-radius: 50%; cursor: default; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text); }
+.calendar-grid .day { padding: 12px 4px; cursor: default; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text); display: flex; align-items: center; justify-content: center; font-weight: 300; }
 .calendar-grid .day.other-month { color: #ccc; }
-.calendar-grid .day.wedding-day { background: var(--wine); color: white; font-weight: 600; animation: heartbeat 1.5s ease-in-out infinite; }
-@keyframes heartbeat { 0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.1)}60%{transform:scale(1)} }
+.calendar-grid .day.wedding-day {
+    position: relative;
+    z-index: 5;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10px;
+    margin: 50 auto 0;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    animation: heartPulse 1.5s ease-in-out infinite;
+}
+.calendar-grid .day.wedding-day::before,
+.calendar-grid .day.wedding-day::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    width: 22px;
+    height: 34px;
+    background: #7B8D5A;
+    border-radius: 22px 22px 0 0;
+    z-index: -1;
+}
+.calendar-grid .day.wedding-day::before {
+    left: 22px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+.calendar-grid .day.wedding-day::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+@keyframes heartPulse {
+    0%,100% { transform: scale(1); }
+    15% { transform: scale(1.12); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.06); }
+    60% { transform: scale(1); }
+}
 
-.serif-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--wine); margin-bottom: 20px; }
-.serif-sub { font-size: 0.85rem; color: #6B6B6B; }
+.greeting-title {
+    font-family: 'Eskal', 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: #7B8D5A;
+    margin-bottom: 20px;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+.greeting-title br {
+    display: block;
+    content: '';
+    margin-top: -8px;
+}
+.greeting-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 4px;
+    text-align: justify;
+    text-indent: 20px;
+}
+.location-photo {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
 .dice-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--brown); margin-bottom: 15px; }
 
 .timer-section { background: linear-gradient(135deg, var(--olive), var(--olive-light)); padding: 60px 0; color: white; }
