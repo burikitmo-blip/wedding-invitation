@@ -11,11 +11,11 @@
 </head>
 <body>
 
-    <div class="marquee">
-        <div class="marquee__inner">
-            <span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span>
-            <span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span>
-        </div>
+    <div class="marquee" id="marquee">
+    <div class="marquee__inner" id="marqueeInner">
+        <span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span>
+        <span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span>
+    </div>
     </div>
 
     <section class="hero fade-up">
@@ -53,27 +53,16 @@
         </div>
     </section>
 
-    <div class="container"><div class="section-divider fade-up"></div></div>
-
     <section>
-        <div class="container fade-up">
-            <p class="dice-title">Потряси телефон или нажми на кубики!</p>
-            <div class="dice-playground" id="dicePlayground">
-                <div class="dice" id="dice1">⚀</div>
-                <div class="dice" id="dice2">⚅</div>
-            </div>
+    <div class="container">
+        <div class="fade-up">
+            <span class="greeting-title">Локация</span>
+            <img src="https://i.imgur.com/ES5qnon.jpg" alt="Парк-отель Спасское" class="location-photo">
+            <h3>Летняя веранда парк-отеля «Спасское»</h3>
+            <p>по адресу: Рыбинский район, село Спасс, ул. Нижняя д.61</p>
+            <a href="https://yandex.ru/maps/?text=Рыбинский+район+село+Спасс+ул+Нижняя+61" target="_blank" class="btn-outline map-btn">Открыть на карте</a>
         </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <div class="fade-up">
-                <span class="greeting-title">Локация</span>
-                <img src="https://i.imgur.com/ES5qnon.jpg" alt="Парк-отель Спасское" class="location-photo">
-                <h3>Летняя веранда парк-отеля «Спасское»</h3>
-                <p>по адресу: Рыбинский район, село Спасс, ул. Нижняя д.61</p>
-            </div>
-        </div>
+    </div>
     </section>
 
     <section>
@@ -122,18 +111,14 @@
         </div>
     </section>
 
-    <section>
-        <div class="container">
-            <div class="elegant-card card-gift fade-up">
-                <div class="card-ornament"></div>
-                <span class="label">подарки</span>
-                <p>Ваше присутствие для нас — лучший подарок.<br>Если вы захотите порадовать нас дополнительно —<br>будем благодарны за вклад в наше будущее в конверте</p>
-            </div>
-            <div class="photo-single fade-up">
-                <img src="https://i.imgur.com/a6R7DRe.jpg" alt="Фото молодоженов">
-            </div>
-        </div>
-    </section>
+<!-- Гирлянда с полароидами -->
+<section>
+    <div class="container fade-up">
+        <p class="dice-title" style="color:var(--wine);">Наши счастливые моменты</p>
+        <div class="garland-wrapper" id="garlandWrapper"></div>
+        <p class="swipe-hint">← свайпай →</p>
+    </div>
+</section>
 
     <section>
         <div class="container">
@@ -148,31 +133,12 @@
 
     <div class="container"><div class="section-divider fade-up"></div></div>
 
+    <!-- RSVP -->
     <section>
-        <div class="container">
-            <p class="fade-up rsvp-intro">Пожалуйста, подтвердите свое присутствие, заполнив анкету ниже,<br>это поможет нам в организации нашего праздника</p>
-            <div class="rsvp-form fade-up" id="rsvpFormContainer">
-                <form id="rsvpForm">
-                    <div class="form-group"><label>Имя и Фамилия</label><input type="text" id="guestName" placeholder="Введите ваше имя" required></div>
-                    <div class="form-group"><label>Телефон</label><input type="tel" id="guestPhone" placeholder="+7 (___) ___-__-__"></div>
-                    <div class="form-group"><label>Планируете присутствовать?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="attendance" value="yes" required> Да, с удовольствием</label>
-                            <label><input type="radio" name="attendance" value="no"> К сожалению, нет</label>
-                        </div>
-                    </div>
-                    <div class="form-group"><label>Предпочтения по напиткам</label>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" name="drink" value="red_wine"> Красное вино</label>
-                            <label><input type="checkbox" name="drink" value="white_wine"> Белое вино</label>
-                            <label><input type="checkbox" name="drink" value="champagne"> Шампанское</label>
-                            <label><input type="checkbox" name="drink" value="spirits"> Крепкие напитки</label>
-                            <label><input type="checkbox" name="drink" value="non_alcoholic"> Безалкогольные напитки</label>
-                        </div>
-                    </div>
-                    <button type="submit">Отправить</button>
-                </form>
-                <div class="form-success" id="formSuccess"><p>✨ Спасибо! Ваш ответ принят.</p><p class="form-success-sub">Будем ждать встречи!</p></div>
+        <div class="container fade-up">
+            <p class="rsvp-intro">Пожалуйста, подтвердите свое присутствие, заполнив анкету ниже,<br>это поможет нам в организации нашего праздника</p>
+            <div class="rsvp-form">
+                <iframe src="https://forms.yandex.ru/cloud/6a1f51ed02848f3f32e44efa" width="100%" height="650" frameborder="0" style="border:none;border-radius:4px;"></iframe>
             </div>
         </div>
     </section>
@@ -194,7 +160,6 @@
 
     <script src="js/calendar.js"></script>
     <script src="js/timer.js"></script>
-    <script src="js/dice.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/rsvp.js"></script>
     <script src="js/frisbee.js"></script>
@@ -217,6 +182,26 @@
                 photoObserver.observe(photoEl);
             }
         });
+    </script>
+    <script src="js/garland.js"></script>
+    <script>
+    (function() {
+        var inner = document.getElementById('marqueeInner');
+        if (!inner) return;
+        var pos = 0;
+        var speed = 0.5; // пикселей в кадр
+        var halfWidth = inner.scrollWidth / 2;
+    
+    function step() {
+        pos -= speed;
+        if (pos <= -halfWidth) {
+            pos += halfWidth;
+        }
+        inner.style.transform = 'translateX(' + pos + 'px)';
+        requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+    })();
     </script>
 </body>
 </html>
