@@ -57,7 +57,7 @@
     <div class="container">
         <div class="fade-up">
             <span class="greeting-title">Локация</span>
-            <img src="https://i.imgur.com/ES5qnon.jpg" alt="Парк-отель Спасское" class="location-photo">
+            <img src="https://i.imgur.com/swTDSoO.jpg" alt="Парк-отель Спасское" class="location-photo">
             <h3>Летняя веранда парк-отеля «Спасское»</h3>
             <p>по адресу: Рыбинский район, село Спасс, ул. Нижняя д.61</p>
             <a href="https://yandex.ru/maps/?text=Рыбинский+район+село+Спасс+ул+Нижняя+61" target="_blank" class="btn-outline map-btn">Открыть на карте</a>
@@ -65,20 +65,49 @@
     </div>
     </section>
 
+    <!-- Тайминг -->
     <section>
         <div class="container">
-            <div class="elegant-card card-time fade-up">
-                <div class="card-ornament"></div>
-                <span class="label">time</span>
-                <p><strong>14:00</strong> — сбор гостей, фуршет</p>
-                <p><strong>15:00</strong> — начало церемонии</p>
-                <p><strong>23:00</strong> — завершение вечера</p>
+            <span class="greeting-title">Программа дня</span>
+            <div class="timeline">
+            <div class="timeline-item">
+                <span class="time">14:00</span>
+                <div class="line"></div>
+                <div class="text">
+                    <span class="title">Торжественная регистрация брака</span>
+                    <span class="sub">ЗАГС г. Рыбинска, ул. Кораблестроителей, д.6</span>
+                </div>
             </div>
+            <div class="timeline-item">
+                <span class="time">16:30</span>
+                <div class="line"></div>
+                <div class="text">
+                    <span class="title">Фуршет*</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="time">17:00</span>
+                <div class="line"></div>
+                <div class="text">
+                    <span class="title">Праздничный банкет*</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <span class="time">23:00</span>
+                <div class="line"></div>
+                <div class="text">
+                    <span class="title">Завершение</span>
+                </div>
+            </div>
+        </div>
+        <p class="timeline-note">* возможны незначительные изменения тайминга мероприятия, мы оперативно сообщим обо всех обновлениях в нашем общем чате</p>
+    </div>
         </div>
     </section>
 
     <section class="timer-section">
         <div class="container fade-up">
+            <p class="greeting-title-white">До свадьбы осталось</p>
             <div class="timer-grid">
                 <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">дней</div></div>
                 <span class="timer-separator">:</span>
@@ -88,25 +117,15 @@
                 <span class="timer-separator">:</span>
                 <div class="timer-item"><div class="timer-number" id="seconds">00</div><div class="timer-label">секунд</div></div>
             </div>
-            <p class="timer-note">До свадьбы осталось</p>
         </div>
     </section>
 
     <section>
-        <div class="container">
-            <div class="elegant-card card-dress fade-up">
-                <div class="card-ornament"></div>
-                <span class="label">dress code</span>
-                <p>Для вашего удобства мы подобрали примеры образов, которыми вы можете вдохновиться</p>
-                <p>Будем рады, если вы поддержите цветовую гамму нашего праздника</p>
-                <div class="color-palette">
-                    <div class="color-circle" style="background-color:#7B8D5A;" title="Оливковый"></div>
-                    <div class="color-circle" style="background-color:#8B6F5C;" title="Коричневый"></div>
-                    <div class="color-circle" style="background-color:#7A3B48;" title="Винный"></div>
-                    <div class="color-circle" style="background-color:#E8DDD3;" title="Бежевый"></div>
-                    <div class="color-circle" style="background-color:#C9B28B;" title="Золотой"></div>
-                </div>
-                <button class="btn-outline" onclick="openModal()">Посмотреть образы</button>
+            <div class="container">
+                <div class="fade-up">
+                <span class="greeting-title">Дресс-код</span>
+                <p class="greeting-text">Для нас очень важна визуальная составляющая праздника, поэтому убедительно просим вас отказаться от любых принтов, надписей и узоров в одежде, отдав предпочтение однотонным нарядам в следующих оттенках:</p>
+                <img src="https://i.imgur.com/zONr7m6.jpg" alt="Дресс код" class="photo-full">
             </div>
         </div>
     </section>
@@ -114,49 +133,43 @@
 <!-- Гирлянда с полароидами -->
 <section>
     <div class="container fade-up">
-        <p class="dice-title" style="color:var(--wine);">Наши счастливые моменты</p>
+        <span class="greeting-title">Наши счастливые моменты</span>
         <div class="garland-wrapper" id="garlandWrapper"></div>
         <p class="swipe-hint">← свайпай →</p>
     </div>
 </section>
 
     <section>
-        <div class="container">
-            <div class="elegant-card card-details fade-up">
-                <div class="card-ornament"></div>
-                <span class="label">details</span>
-                <p><strong>Маленькие гости</strong></p>
-                <p>К сожалению, на нашем торжестве не предусмотрены условия для маленьких гостей, поэтому просим вас оставить детей в надежных руках на этот вечер</p>
+            <div class="container">
+                <div class="fade-up">
+                <h2 class="greeting-title">Подарки</h2>
+                <p class="greeting-text">Если хотите подарить нам ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет нашей семьи</p>
+                <p class="greeting-text">Сразу после свадьбы мы улетаем в свадебное путешествие, поэтому просим не дарить нам цветы, так как мы не успеем насладиться их красотой до вылета</p>
             </div>
-        </div>
     </section>
-
-    <div class="container"><div class="section-divider fade-up"></div></div>
 
     <!-- RSVP -->
     <section>
         <div class="container fade-up">
-            <p class="rsvp-intro">Пожалуйста, подтвердите свое присутствие, заполнив анкету ниже,<br>это поможет нам в организации нашего праздника</p>
+            <span class="greeting-title">Анкета гостя</span>
+            <p class="rsvp-intro">Пожалуйста, подтвердите свое присутствие, заполнив анкету ниже,<br>это поможет нам в организации нашего праздника. <br>Ваши ответы ждем до 01.07.2026</p>
             <div class="rsvp-form">
                 <iframe src="https://forms.yandex.ru/cloud/6a1f51ed02848f3f32e44efa" width="100%" height="650" frameborder="0" style="border:none;border-radius:4px;"></iframe>
             </div>
         </div>
     </section>
 
-    <div class="footer fade-up"><p>с любовью,</p><p>Дмитрий и Кристина</p></div>
-
-    <div class="modal-overlay" id="dressModal">
-        <div class="modal">
-            <button class="modal-close" onclick="closeModal()">✕</button>
-            <h2 class="modal-title">Образы для вдохновения</h2>
-            <div class="dress-grid">
-                <img src="https://i.imgur.com/4gy7h3q.jpg" alt="Образ 1">
-                <img src="https://i.imgur.com/UcLblai.jpg" alt="Образ 2">
-                <img src="https://i.imgur.com/5MyaaxN.jpg" alt="Образ 3">
-                <img src="https://i.imgur.com/IQhKIxX.jpg" alt="Образ 4">
-            </div>
+    <div class="chat-btn">
+        <span class="greeting-title"><h6>Добавляйтесь в чат для получения актуальной информации</h6></span>
+        <div class="scroll-arrow">
+            <svg viewBox="0 0 24 38" fill="none" stroke="#7B8D5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v28M5 23l7 7 7-7"/>
+            </svg>
         </div>
-    </div>
+        <a href="https://vk.me/join/Vh7jyAdMcIzqVVCn13jEZum1_pOQF_lQljg=" target="_blank" class="btn-outline map-btn">Ссылка на чат ВК</a>
+    </div>      
+
+    <div class="footer fade-up"><p>с любовью,</p><p>Дмитрий и Кристина</p></div>
 
     <script src="js/calendar.js"></script>
     <script src="js/timer.js"></script>
