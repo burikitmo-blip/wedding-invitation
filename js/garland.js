@@ -3,16 +3,16 @@
     if (!wrapper) return;
 
     var photos = [
-        { src: 'https://i.imgur.com/rzFGKfa.jpg', text: 'Наше первое фото вдвоем' },
-        { src: 'https://i.imgur.com/oHeYNH2.jpg', text: 'Свидание в парке' },
-        { src: 'https://i.imgur.com/a6R7DRe.jpg', text: 'Тот самый день' },
-        { src: 'https://i.imgur.com/4gy7h3q.jpg', text: 'Путешествие мечты' },
-        { src: 'https://i.imgur.com/UcLblai.jpg', text: 'Наш уютный вечер' },
-        { src: 'https://i.imgur.com/5MyaaxN.jpg', text: 'Вместе навсегда' },
-        { src: 'https://i.imgur.com/IQhKIxX.jpg', text: 'Смех и радость' },
-        { src: 'https://i.imgur.com/ES5qnon.jpg', text: 'Наше место' },
-        { src: 'https://i.imgur.com/BD7ghSq.jpg', text: 'День признания' },
-        { src: 'https://i.imgur.com/oHeYNH2.jpg', text: 'Готовимся к свадьбе' }
+        { src: 'https://i.imgur.com/VZpOvyr.jpg', text: 'Наше первое фото вдвоем' },
+        { src: 'https://i.imgur.com/VkvOsge.jpg', text: 'Чемпионы костюмированной <br>вечеринки' },
+        { src: 'https://i.imgur.com/iYeen25.jpg', text: 'Тот самый день' },
+        { src: 'https://i.imgur.com/C4WUg2y.jpg', text: 'Первый день ипотеки' },
+        { src: 'https://i.imgur.com/C7LfsrO.jpg', text: 'Они что-то знали' },
+        { src: 'https://i.imgur.com/knUfE6J.jpg', text: 'Всегда в тренде' },
+        { src: 'https://i.imgur.com/643My0P.jpg', text: 'В погоне за чудесами света' },
+        { src: 'https://i.imgur.com/bJ6sBma.jpg', text: 'Оазис любви' },
+        { src: 'https://i.imgur.com/bWstkFV.jpg', text: 'Вместе создаем <br>волшебные моменты <br>(чудим потихонечку)' },
+        { src: 'https://i.imgur.com/1qr06ww.jpg', text: 'Ловим счастливые моменты <br>и фрисби' }
     ];
 
     var offsets   = [8, 0, 12, 3, 6, 1, 10, 4, 8, 2];
