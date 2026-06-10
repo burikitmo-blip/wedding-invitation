@@ -98,11 +98,9 @@ body {
 }
 
 .frisbee-section {
-    position: relative; padding: 80px 0; overflow: hidden;
-    min-height: 500px;
-    background: linear-gradient(180deg, rgba(163,177,138,0.08) 0%, rgba(122,59,72,0.05) 50%, rgba(163,177,138,0.08) 100%);
+    position: relative; padding: 0px 0; overflow: hidden;
+    min-height: 250px;
 }
-.frisbee-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--wine); margin-bottom: 15px; }
 .frisbee-scene { position: relative; max-width: 700px; height: 380px; margin: 0 auto; }
 
 .cloud { position: absolute; background: rgba(255,255,255,0.6); border-radius: 50%; }
@@ -331,7 +329,7 @@ button[type="submit"]:hover { background:var(--olive-light); }
 .form-success { display:none; text-align:center; padding:40px; color:var(--olive); font-style:italic; }
 .form-success-sub { font-size: 0.85rem; margin-top: 12px; }
 
-.footer { text-align:center; padding:80px 20px; font-size:0.95rem; color:var(--text); line-height:1.5; }
+.footer { text-align:center; padding:5px 5px; font-size:0.95rem; color:var(--text); line-height:1.5; }
 .footer::before { content:''; display:block; width:60px; height:2px; background:var(--wine); margin:0 auto 30px; opacity:0.4; }
 .photo-single { max-width:450px; margin:30px auto 0; }
 .photo-single img { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.08); }
@@ -538,7 +536,7 @@ button[type="submit"]:hover { background:var(--olive-light); }
     grid-template-columns: 1fr 20px 1fr;
     align-items: start;
     position: relative;
-    padding: 12px 0;
+    padding: 0px 0;
     gap: 0;
 }
 
