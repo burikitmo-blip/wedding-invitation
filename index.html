@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Приглашение на свадьбу | Дмитрий и Кристина</title>
     <!-- Open Graph -->
     <meta property="og:title" content="Приглашение на свадьбу | Дмитрий и Кристина">
@@ -21,6 +21,27 @@
 </head>
 <body>
 
+    <!-- Заглушка для десктопа и планшетов -->
+    <div id="desktopBlock" style="display:none;position:fixed;inset:0;z-index:99999;background:#faf7f2;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;font-family:'Cormorant Garamond',serif;">
+        <div style="font-size:64px;margin-bottom:24px;">📱</div>
+        <h1 style="font-size:2rem;font-weight:400;color:#4a3728;margin:0 0 16px;">Дмитрий и Кристина</h1>
+        <p style="font-size:1.15rem;color:#7b6e65;line-height:1.6;max-width:360px;margin:0;">Приглашение создано специально для мобильных устройств.<br><br>Пожалуйста, откройте его на смартфоне.</p>
+    </div>
+
+    <script>
+    (function() {
+        // Планшет или десктоп — ширина > 768px и не телефон
+        var ua = navigator.userAgent;
+        var isPhone = /iPhone|Android.*Mobile|IEMobile|BlackBerry|Opera Mini/i.test(ua);
+        var isWide  = window.innerWidth > 768;
+        if (!isPhone && isWide) {
+            var block = document.getElementById('desktopBlock');
+            block.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    })();
+    </script>
+
     <div class="marquee" id="marquee">
     <div class="marquee__inner" id="marqueeInner">
         <span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span><span>✨ вас пригласили ✨</span>
@@ -30,23 +51,8 @@
 
     <section class="hero fade-up">
     <div class="photo-pair" id="heroPhotos">
-        <img src="https://i.imgur.com/9mOoUNR.jpg" alt="Фото пары 1">
+        <img src="https://i.imgur.com/Swog79B.jpg" alt="Фото пары 1">
     </div>
-    </section>
-
-    <section class="frisbee-section">
-        <div class="container fade-up">
-            <p class="frisbee-title">Любовь в движении</p>
-            <div class="frisbee-scene" id="frisbeeScene">
-                <div class="sun"></div>
-                <div class="cloud cloud1"></div>
-                <div class="cloud cloud2"></div>
-                <div class="grass"></div>
-                <div class="frisbee-shadow" id="frisbeeShadow"></div>
-                <div class="frisbee-disc" id="frisbeeDisc"><div class="shine"></div></div>
-                <div class="hearts-container" id="heartsContainer"></div>
-            </div>
-        </div>
     </section>
 
     <section>
@@ -100,14 +106,14 @@
                     <img src="https://i.imgur.com/wW7EgPA.jpg" alt="Фуршет" class="tl-img">
                     <div class="text">
                         <span class="time">15:30</span>
-                        <span class="title">Фуршет*</span>
+                        <span class="title">Фуршет</span>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <img src="https://i.imgur.com/3qoCh1k.jpg" alt="Банкет" class="tl-img">
                     <div class="text">
                         <span class="time">16:00</span>
-                        <span class="title">Праздничный банкет*</span>
+                        <span class="title">Праздничный банкет</span>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -118,16 +124,21 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <img src="https://i.imgur.com/Z8BPn15.jpg" alt="Костер/басик" class="tl-img">
+                    <img src="https://i.imgur.com/qpW9SID.jpg" alt="Костер/басик" class="tl-img">
                     <div class="text">
                         <span class="time">22:00 - ...</span>
-                        <span class="title">Уютные посиделки у костра <p class="timeline-note">(для тех, кто решил остался на продолжение)</p></span>
+                        <span class="title">Уютные посиделки у костра <p class="timeline-note">(для тех, кто решит остаться на продолжение)</p></span>
                         <span class="timeline-divider"></span>
+                    </div>
+                    <div class="tl-split-divider"></div>
+                    <img src="https://i.imgur.com/cIeA7qt.jpg" alt="Костер/басик" class="tl-img">
+                    <div class="text">
+                        <span class="time">22:00 - ...</span>
                         <span class="title">Путешествие гостей домой<p class="timeline-note">(для тех, кто решит уехать сразу после банкета)</p></span>
                     </div>
                 </div>
             </div>
-            <p class="timeline-note">* возможны незначительные изменения тайминга мероприятия, мы оперативно сообщим обо всех обновлениях в нашем общем чате</p>
+            <p class="timeline-note">Возможны незначительные изменения тайминга мероприятия, мы оперативно сообщим обо всех обновлениях в нашем общем чате</p>
         </div>
     </section>
 
@@ -192,9 +203,23 @@
             </svg>
         </div>
         <a href="https://vk.me/join/Vh7jyAdMcIzqVVCn13jEZum1_pOQF_lQljg=" target="_blank" class="btn-outline map-btn">Ссылка на чат ВК</a>
-    </div>      
+    </div> 
+    
+    <section class="frisbee-section">
+        <div class="container fade-up">
+            <div class="frisbee-scene" id="frisbeeScene">
+                <div class="sun"></div>
+                <div class="cloud cloud1"></div>
+                <div class="cloud cloud2"></div>
+                <div class="grass"></div>
+                <div class="frisbee-shadow" id="frisbeeShadow"></div>
+                <div class="frisbee-disc" id="frisbeeDisc"><div class="shine"></div></div>
+                <div class="hearts-container" id="heartsContainer"></div>
+            </div>
+        </div>
+    </section>
 
-    <div class="footer fade-up"><p>с любовью,</p><p>Дмитрий и Кристина</p></div>
+    <div class="footer fade-up visible">С любовью,<br> Дмитрий и Кристина</div>
 
     <script src="js/calendar.js"></script>
     <script src="js/timer.js"></script>

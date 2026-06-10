@@ -331,7 +331,7 @@ button[type="submit"]:hover { background:var(--olive-light); }
 .form-success { display:none; text-align:center; padding:40px; color:var(--olive); font-style:italic; }
 .form-success-sub { font-size: 0.85rem; margin-top: 12px; }
 
-.footer { text-align:center; padding:80px 20px; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-style:italic; color:var(--wine); }
+.footer { text-align:center; padding:80px 20px; font-size:0.95rem; color:var(--text); line-height:1.5; }
 .footer::before { content:''; display:block; width:60px; height:2px; background:var(--wine); margin:0 auto 30px; opacity:0.4; }
 .photo-single { max-width:450px; margin:30px auto 0; }
 .photo-single img { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.08); }
@@ -491,15 +491,15 @@ button[type="submit"]:hover { background:var(--olive-light); }
     box-shadow: none;
     border-left: none;
     overflow: hidden;
-    height: 500px;
+    height: 450px;
     position: relative;
 }
 .rsvp-form iframe {
     border-radius: 8px;
     box-shadow: 0 4px 30px rgba(0,0,0,0.04);
-    height: 870px;
+    height: 800px;
     margin-top: -225px;
-    margin-bottom: -105px;
+    margin-bottom: -20px;
 }
 
 .rsvp-intro {
@@ -515,70 +515,90 @@ button[type="submit"]:hover { background:var(--olive-light); }
     text-align: left;
 }
 .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
     position: relative;
     padding: 10px 0;
 }
+
+/* Вертикальная линия строго по центру */
 .timeline::before {
     content: '';
     position: absolute;
     left: 50%;
-    top: 20px;
-    bottom: 20px;
+    top: 0;
+    bottom: 0;
     width: 2px;
+    transform: translateX(-50%);
     background: var(--beige-dark);
+    z-index: 0;
 }
+
+/* Каждый item — сетка: [картинка] [точка] [текст] */
 .timeline-item {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr;
+    align-items: start;
     position: relative;
-    padding: 2px 0;
+    padding: 12px 0;
+    gap: 0;
 }
+
+/* Точка — в центральной колонке, по центру картинки (120px / 2 - 5px = 55px) */
 .timeline-item::before {
     content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 50%;
+    grid-column: 2;
+    justify-self: center;
+    align-self: start;
+    margin-top: 55px;
     width: 10px;
     height: 10px;
     background: var(--brown);
     border-radius: 50%;
     z-index: 2;
+    position: relative;
 }
+
+/* Картинка — левая колонка, прижата вправо */
 .tl-img {
-    width: 150px;
-    height: 150px;
-    min-width: 48px;
+    grid-column: 1;
+    width: 120px;
+    height: 120px;
     border-radius: 8px;
     object-fit: cover;
-    z-index: 2;
-    margin-top: 4px;
+    justify-self: end;
+    margin-right: 16px;
+    z-index: 1;
+    display: block;
 }
+
+/* Текст — правая колонка, прижат влево */
 .text {
+    grid-column: 3;
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-left: 30px;
-    flex: 1;
+    margin-left: 16px;
 }
+
 .time {
     font-family: 'Montserrat-Medium', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--brown);
+    line-height: 1.2;
 }
+
 .title {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--text);
     font-weight: 500;
+    line-height: 1.4;
 }
+
 .sub {
     font-size: 0.8rem;
     color: #999;
 }
+
 .timeline-divider {
     display: block;
     width: 100%;
@@ -587,6 +607,15 @@ button[type="submit"]:hover { background:var(--olive-light); }
     margin: 6px 0;
     opacity: 0.6;
 }
+
+.tl-split-divider {
+    width: 140px;  /* точно как ширина фото */
+    height: 1px;
+    background: var(--beige-dark);
+    opacity: 0.6;
+    margin: -7px 0 20px 0;
+}
+
 .timeline-note {
     font-size: 0.7rem;
     color: #bbb;
@@ -595,10 +624,11 @@ button[type="submit"]:hover { background:var(--olive-light); }
     line-height: 1.6;
     text-align: center;
 }
+
 .chat-btn {
     display: block;
     text-align: center;
-    margin: 15px auto 0;
+    padding: 20px 32px;
 }
 .scroll-arrow {
     text-align: center;
